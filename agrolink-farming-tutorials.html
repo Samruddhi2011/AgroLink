@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrolink - Farming Tutorials</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">  
+    <style>
+        body {
+          font-family: 'Segoe UI', sans-serif;
+          background-color: #f1f8e9;
+          color: #333;
+        }
+        .navbar {
+          background-color: #2e7d32;
+        }
+        .navbar-brand, .nav-link, .dropdown-toggle {
+          color: #fff !important;
+        }
+        .dropdown-menu {
+          background-color: #a5d6a7;
+        }
+        .dropdown-item:hover {
+          background-color: #2e7d32;
+          color: white;
+        }
+        .btn-account {
+          background-color: #fff;
+          color: #2e7d32;
+          font-weight: bold;
+          border-radius: 20px;
+          padding: 5px 15px;
+          margin-left: 15px;
+        }
+        .dashboard-header {
+          background-color: #2e7d32;
+          color: white;
+          padding: 2rem 0;
+        }
+        .dashboard-card {
+          height: 100%;
+          transition: transform 0.3s;
+          border-radius: 10px;
+          border: none;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .dashboard-card:hover {
+          transform: translateY(-5px);
+        }
+        .dashboard-card .card-header {
+          background-color: #2e7d32;
+          color: white;
+          border-radius: 10px 10px 0 0;
+          font-weight: bold;
+        }
+        .tutorial-img {
+          height: 200px;
+          object-fit: cover;
+          border-radius: 10px 10px 0 0;
+        }
+        .scheme-tag {
+          background-color: #a5d6a7;
+          color: #1b5e20;
+          padding: 3px 8px;
+          border-radius: 12px;
+          font-size: 0.8rem;
+          margin-right: 5px;
+        }
+        .footer {
+          background-color: #1b5e20;
+          color: white;
+          padding: 2rem 0;
+          margin-top: 2rem;
+        }
+        .footer a {
+          color: #a5d6a7;
+          text-decoration: none;
+        }
+        .footer a:hover {
+          text-decoration: underline;
+        }
+      </style>
+      
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-leaf me-2"></i>AgroLink
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="homepage.html">Home</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link" href="agrolink-schemes-page.html"> Govt. Schemes</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link" href="product (1).html">Market Connect</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="weatherupdate.html">Weather</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="agrolink-about-us.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="agrolink-contact-page.html">Contact</a>
+          </li>
+        </ul>
+  
+        <div class="d-flex">
+          <button class="btn btn-account">
+            <i class="fas fa-user me-1"></i> My Account
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>  
+
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1><i class="fas fa-chalkboard-teacher me-2"></i>Farming Tutorials</h1>
+                    <p>Learn sustainable and modern farming techniques</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container my-4">
+        <!-- Featured Tutorial -->
+        <div class="card mb-4 dashboard-card">
+            <div class="card-header">
+                <h3>Featured Tutorial</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="irr.jpg" alt="Drip Irrigation" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-8">
+                        <h4>Drip Irrigation: Save Water & Increase Yield</h4>
+                        <p>Learn how to implement drip irrigation techniques that can save up to 60% water while improving crop yield by 20-50%.</p>
+                        <div class="mb-3">
+                            <span class="scheme-tag">PMKSY</span>
+                            <span class="scheme-tag">Water Conservation</span>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=tmEj3MQPlTY" target="_blank" class="btn btn-success">
+                            <i class="fab fa-youtube me-1"></i>Watch Now
+                        </a>
+                          
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutorial Categories -->
+        <section class="bg-white py-3">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold">Browse by Category</h3>
+                </div>
+                <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card dashboard-card h-100">
+                        <img src="susfarm.jpg" alt="Sustainable Farming" class="tutorial-img">
+                        <div class="card-body">
+                            <h5>Sustainable Farming</h5>
+                            <p>15 tutorials</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card h-100">
+                        <img src="organic.jpg" alt="Organic Methods" class="tutorial-img">
+                        <div class="card-body">
+                            <h5>Organic Methods</h5>
+                            <p>12 tutorials</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card dashboard-card h-100">
+                        <img src="watermang.jpg" alt="Water Management" class="tutorial-img">
+                        <div class="card-body">
+                        <h5>Water Management</h5>
+                        <p>8 tutorials</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  
+
+        <!-- Latest Tutorials -->
+        <h3>Latest Tutorials</h3>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <img src="soiltest.jpg" alt="Soil Testing" class="tutorial-img">
+                    <div class="card-body">
+                        <h5>Soil Testing Methods</h5>
+                        <p>Learn how to test your soil quality using simple techniques and government resources.</p>
+                        <span class="scheme-tag">Soil Health Card</span>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <span><i class="fas fa-clock me-1"></i> 35 min</span>
+                            <a href="https://www.youtube.com/watch?v=T_0N__RsNBg" target="_blank" class="btn btn-success">
+                                <i class="fab fa-youtube me-1"></i>Watch Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <img src="Crop-Rotation-Practice-1.webp" alt="Crop Rotation" class="tutorial-img">
+                    <div class="card-body">
+                        <h5>Modern Crop Rotation</h5>
+                        <p>Scientific approaches to crop rotation that improve soil health and increase yield.</p>
+                        <span class="scheme-tag">NFSM</span>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <span><i class="fas fa-clock me-1"></i> 42 min</span>
+                            <a href="https://www.youtube.com/watch?v=xIYsB_2_6go" target="_blank" class="btn btn-success">
+                                <i class="fab fa-youtube me-1"></i>Watch Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <img src="marktfarm.jpg" alt="Digital Marketing" class="tutorial-img">
+                    <div class="card-body">
+                        <h5>Digital Marketing for Farmers</h5>
+                        <p>How to sell your produce directly to consumers using online platforms.</p>
+                        <span class="scheme-tag">E-NAM</span>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <span><i class="fas fa-clock me-1"></i> 28 min</span>
+                            <a href="https://www.youtube.com/watch?v=JeU_EYFH1Jk" target="_blank" class="btn btn-success">
+                                <i class="fab fa-youtube me-1"></i>Watch Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+  
+        <!-- About -->
+        <div class="col-md-4">
+          <h5><i class="fas fa-leaf me-2"></i>Agrolink</h5>
+          <p>Connecting farmers to resources, markets, and knowledge for sustainable agriculture.</p>
+        </div>
+  
+        <!-- Quick Links -->
+        <div class="col-md-2">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Gov. Schemes</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+  
+        <!-- Government Links -->
+        <div class="col-md-3">
+          <h5>Government Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Ministry of Agriculture</a></li>
+            <li><a href="#">PM-KISAN Portal</a></li>
+            <li><a href="#">Weather Forecast</a></li>
+          </ul>
+        </div>
+  
+        <!-- Contact Info -->
+        <div class="col-md-3">
+          <h5>Contact Us</h5>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt me-2"></i>Krishi Bhavan, Mumbai - 400056</li>
+            <li><i class="fas fa-phone me-2"></i>1800-364-4639 | +91-9262946391</li>
+            <li><i class="fas fa-envelope me-2"></i>info@agrolink.in | support@agrolink.in</li>
+          </ul>
+        </div>
+  
+      </div>
+  
+      <!-- Copyright -->
+      <div class="row mt-3">
+        <div class="col-12 text-center">
+          <p>&copy; 2025 Agrolink. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

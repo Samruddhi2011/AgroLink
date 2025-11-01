@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | Community Forum</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: #333;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-signup {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .hero {
+      background: url('bg.jpg.jpg') no-repeat center center/cover;
+      height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h1, .hero p {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .brands img {
+      height: 80px;
+      object-fit: contain;
+      margin: 15px;
+    }
+
+    .news-card {
+      border: none;
+      transition: transform 0.3s;
+    }
+
+    .news-card:hover {
+      transform: scale(1.05);
+    }
+
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+    }
+
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .forum-card {
+      background-color: white;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .forum-header {
+      padding: 15px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    .forum-body {
+      padding: 20px;
+    }
+    
+    .forum-footer {
+      padding: 15px;
+      border-top: 1px solid #eaeaea;
+      background-color: rgba(165, 214, 167, 0.3);
+      border-radius: 0 0 10px 10px;
+    }
+    
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    
+    .category-badge {
+      background-color: var(--secondary);
+      color: var(--dark);
+      font-size: 0.8rem;
+      padding: 3px 10px;
+      border-radius: 15px;
+      margin-right: 10px;
+    }
+    
+    .btn-forum {
+      background-color: var(--primary);
+      color: white;
+      border-radius: 20px;
+    }
+    
+    .btn-forum:hover {
+      background-color: var(--dark);
+      color: white;
+    }
+    
+    .forum-sidebar {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Features
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="product (1).html">Marketplace</a></li>
+              <li><a class="dropdown-item" href="weatherupdate.html">News</a></li>
+              <li><a class="dropdown-item" href="expertadvice.html">Expert Advice</a></li>
+              <li><a class="dropdown-item" href="agrolink-schemes-page.html">Government Schemes</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="community-forum.html">Community</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        </ul>
+        <a href="#signup" class="btn btn-light btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero text-white d-flex align-items-center" style="background-image: url('communitypic.jpeg'); background-size: cover; background-position: center; height: 50vh;">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Community Forum</h1>
+      <p class="lead">Connect with farmers, experts, and buyers across the country</p>
+    </div>
+  </section>
+
+  <!-- Forum Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Main Forum Content -->
+        <div class="col-lg-8">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Recent Discussions</h2>
+          </div>
+          
+          <!-- Forum Post 1 -->
+          <div class="forum-card">
+            <div class="forum-header d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <img src="https://via.placeholder.com/150" alt="User" class="avatar">
+                <div>
+                  <h6 class="mb-0">Rajesh Kumar</h6>
+                  <small class="text-muted">Posted 2 days ago</small>
+                </div>
+              </div>
+              <span class="category-badge">Crop Management</span>
+            </div>
+            <div class="forum-body">
+              <h5>Best practices for organic pest control in rice fields?</h5>
+              <p>I'm looking to transition to organic farming for my rice crops. Has anyone used neem-based solutions for pest control? What's the most effective organic approach in your experience?</p>
+            </div>
+            <div class="forum-footer">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <span><i class="bi bi-chat"></i> 14 Replies</span>
+                  <span class="ms-3"><i class="bi bi-eye"></i> 128 Views</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Forum Post 2 -->
+          <div class="forum-card">
+            <div class="forum-header d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <img src="https://via.placeholder.com/150" alt="User" class="avatar">
+                <div>
+                  <h6 class="mb-0">Meera Patel</h6>
+                  <small class="text-muted">Posted 3 days ago</small>
+                </div>
+              </div>
+              <span class="category-badge">Market Trends</span>
+            </div>
+            <div class="forum-body">
+              <h5>Current market prices for organic vegetables in northern states</h5>
+              <p>Can anyone share the current market rates they're getting for organic vegetables in Punjab and Haryana regions? Especially interested in cauliflower and tomato prices.</p>
+            </div>
+            <div class="forum-footer">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <span><i class="bi bi-chat"></i> 23 Replies</span>
+                  <span class="ms-3"><i class="bi bi-eye"></i> 216 Views</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Forum Post 3 -->
+          <div class="forum-card">
+            <div class="forum-header d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <img src="https://via.placeholder.com/150" alt="User" class="avatar">
+                <div>
+                  <h6 class="mb-0">Dr. Anil Sharma</h6>
+                  <small class="text-muted">Posted 1 week ago</small>
+                </div>
+              </div>
+              <span class="category-badge">Expert Advice</span>
+            </div>
+            <div class="forum-body">
+              <h5>Weather patterns and crop planning for 2025</h5>
+              <p>Based on meteorological data, we're expecting unusual rainfall patterns this year. I'd recommend adjusting your planting schedules accordingly. Let's discuss adaptation strategies for different regions.</p>
+            </div>
+            <div class="forum-footer">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <span><i class="bi bi-chat"></i> 42 Replies</span>
+                  <span class="ms-3"><i class="bi bi-eye"></i> 387 Views</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Forum Post 4 -->
+          <div class="forum-card">
+            <div class="forum-header d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <img src="https://via.placeholder.com/150" alt="User" class="avatar">
+                <div>
+                  <h6 class="mb-0">Sunita Devi</h6>
+                  <small class="text-muted">Posted 1 week ago</small>
+                </div>
+              </div>
+              <span class="category-badge">Technology</span>
+            </div>
+            <div class="forum-body">
+              <h5>Experience with new soil moisture sensors?</h5>
+              <p>Has anyone tried the new affordable soil moisture sensors being promoted through the government scheme? Are they accurate and durable enough for field conditions?</p>
+            </div>
+            <div class="forum-footer">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <span><i class="bi bi-chat"></i> 18 Replies</span>
+                  <span class="ms-3"><i class="bi bi-eye"></i> 193 Views</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <div class="forum-sidebar mb-4">
+            <h4>Categories</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Crop Management
+                <span class="badge bg-secondary rounded-pill">42</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Market Trends
+                <span class="badge bg-secondary rounded-pill">28</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Technology
+                <span class="badge bg-secondary rounded-pill">19</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Government Schemes
+                <span class="badge bg-secondary rounded-pill">24</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                Expert Advice
+                <span class="badge bg-secondary rounded-pill">36</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="forum-sidebar mb-4">
+            <h4>Top Contributors</h4>
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://via.placeholder.com/150" alt="User" class="avatar">
+              <div>
+                <h6 class="mb-0">Dr. Anil Sharma</h6>
+                <small class="text-muted">146 posts</small>
+              </div>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://via.placeholder.com/150" alt="User" class="avatar">
+              <div>
+                <h6 class="mb-0">Rajesh Kumar</h6>
+                <small class="text-muted">124 posts</small>
+              </div>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <img src="https://via.placeholder.com/150" alt="User" class="avatar">
+              <div>
+                <h6 class="mb-0">Meera Patel</h6>
+                <small class="text-muted">98 posts</small>
+              </div>
+            </div>
+          </div>
+          
+          <div class="forum-sidebar">
+            <h4>Upcoming Online Events</h4>
+            <div class="mb-3">
+              <h6>Sustainable Farming Workshop</h6>
+              <p class="small mb-1">April 15, 2025 • 3:00 PM IST</p>
+              <a href="#" class="btn btn-sm btn-forum">Register</a>
+            </div>
+            <div class="mb-3">
+              <h6>Market Access for Small Farmers</h6>
+              <p class="small mb-1">April 22, 2025 • 5:00 PM IST</p>
+              <a href="#" class="btn btn-sm btn-forum">Register</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 AgroLink. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      $(".navbar-nav a").on('click', function (e) {
+        if (this.hash !== "") {
+          e.preventDefault();
+          const hash = this.hash;
+          $('html, body').animate({ scrollTop: $(hash).offset().top - 70 }, 800);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

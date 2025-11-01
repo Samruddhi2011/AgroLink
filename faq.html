@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | FAQ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: #333;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-signup {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title {
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .faq-card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .faq-card .card-header {
+      background-color: var(--secondary);
+      border: none;
+      padding: 15px 20px;
+      cursor: pointer;
+    }
+
+    .faq-card .card-header h5 {
+      color: var(--dark);
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .faq-card .card-body {
+      padding: 20px;
+      background-color: white;
+    }
+
+    .category-title {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--secondary);
+    }
+
+    .contact-box {
+      background-color: white;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+    }
+
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Features
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="index.html#brands">Marketplace</a></li>
+              <li><a class="dropdown-item" href="index.html#news">News</a></li>
+              <li><a class="dropdown-item" href="expert-advice.html">Expert Advice</a></li>
+              <li><a class="dropdown-item" href="#contact">Government Scheme</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="weather.html">Weather</a></li>
+          <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        </ul>
+        <a href="signup.html" class="btn btn-light btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero text-white d-flex align-items-center" style="background-image: url('corn-harvet-bruce-morrison.jpg'); background-size: cover; background-position: center; height: 50vh;">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold">Frequently Asked Questions</h1>
+      <p class="lead">Find answers to common questions about AgroLink</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <h2 class="section-title">How can we help you?</h2>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="mb-5">
+            <h3 class="category-title">Account & Registration</h3>
+            
+            <div class="accordion" id="accountFAQ">
+              <div class="card faq-card">
+                <div class="card-header" id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                  <h5>How do I create an account on AgroLink?</h5>
+                </div>
+                <div id="collapseOne" class="collapse show" data-bs-parent="#accountFAQ">
+                  <div class="card-body">
+                    To create an account, click the "Sign Up" button in the top right corner of any page. Choose your account type (Farmer, Buyer, or Expert), fill in your details, verify your mobile number or email, and you're ready to go! The sign-up process takes less than 5 minutes.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card faq-card">
+                <div class="card-header" id="headingTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                  <h5>What's the difference between farmer, buyer, and expert accounts?</h5>
+                </div>
+                <div id="collapseTwo" class="collapse" data-bs-parent="#accountFAQ">
+                  <div class="card-body">
+                    <ul>
+                      <li><strong>Farmer accounts</strong> can list crops for sale, access weather updates, seek expert advice, and participate in community forums.</li>
+                      <li><strong>Buyer accounts</strong> can browse and purchase crops directly from farmers, set up buying preferences, and connect with farmers.</li>
+                      <li><strong>Expert accounts</strong> are verified agricultural specialists who can provide advice, publish articles, and interact with farmers on the platform.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card faq-card">
+                <div class="card-header" id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                  <h5>Is my personal information secure?</h5>
+                </div>
+                <div id="collapseThree" class="collapse" data-bs-parent="#accountFAQ">
+                  <div class="card-body">
+                    Yes, we take data security very seriously. All personal information is encrypted and stored securely. We only share your contact details with other users when necessary for transactions, and you can control your privacy settings from your account dashboard.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-5">
+            <h3 class="category-title">Marketplace</h3>
+            
+            <div class="accordion" id="marketplaceFAQ">
+              <div class="card faq-card">
+                <div class="card-header" id="headingFour" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                  <h5>How do I list my crops for sale?</h5>
+                </div>
+                <div id="collapseFour" class="collapse" data-bs-parent="#marketplaceFAQ">
+                  <div class="card-body">
+                    From your Farmer Dashboard, click on "List New Crop." Fill in details about your crop including type, quantity, quality, expected harvest date, and your asking price. You can also add photos of your crops. Once submitted, your listing will be visible to potential buyers.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card faq-card">
+                <div class="card-header" id="headingFive" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                  <h5>How are payments handled?</h5>
+                </div>
+                <div id="collapseFive" class="collapse" data-bs-parent="#marketplaceFAQ">
+                  <div class="card-body">
+                    AgroLink offers multiple payment options: direct bank transfers, UPI, and our secure AgriPay system. Once a buyer places an order, they can choose their preferred payment method. Funds are held in escrow until delivery is confirmed, ensuring security for both parties.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card faq-card">
+                <div class="card-header" id="headingSix" data-bs-toggle="collapse" data-bs-target="#collapseSix">
+                  <h5>What fees does AgroLink charge?</h5>
+                </div>
+                <div id="collapseSix" class="collapse" data-bs-parent="#marketplaceFAQ">
+                  <div class="card-body">
+                    Basic accounts are free. AgroLink charges a 2% transaction fee on successful sales. Premium accounts have additional features at ₹299/month for farmers and ₹499/month for buyers, with reduced transaction fees of 1%.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-5">
+            <h3 class="category-title">Weather & Advisory Services</h3>
+            
+            <div class="accordion" id="weatherFAQ">
+              <div class="card faq-card">
+                <div class="card-header" id="headingSeven" data-bs-toggle="collapse" data-bs-target="#collapseSeven">
+                  <h5>How accurate are the weather forecasts?</h5>
+                </div>
+                <div id="collapseSeven" class="collapse" data-bs-parent="#weatherFAQ">
+                  <div class="card-body">
+                    Our weather data comes from multiple meteorological sources including IMD (Indian Meteorological Department) and satellite data. The forecasts are typically accurate with a confidence level of 85-90% for 3-day forecasts and 70-75% for 7-day forecasts.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card faq-card">
+                <div class="card-header" id="headingEight" data-bs-toggle="collapse" data-bs-target="#collapseEight">
+                  <h5>How do I get personalized crop advice?</h5>
+                </div>
+                <div id="collapseEight" class="collapse" data-bs-parent="#weatherFAQ">
+                  <div class="card-body">
+                    Navigate to the "Expert Advice" section and select your crop type and specific issue. You can post questions that will be answered by verified agricultural experts within 24 hours. Premium members get priority responses and can schedule video consultations with experts.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card faq-card">
+                <div class="card-header" id="headingNine" data-bs-toggle="collapse" data-bs-target="#collapseNine">
+                  <h5>Can I set up weather alerts for my farm location?</h5>
+                </div>
+                <div id="collapseNine" class="collapse" data-bs-parent="#weatherFAQ">
+                  <div class="card-body">
+                    Yes! Go to the Weather page and click "Set Up Alerts." You can set your exact farm location using GPS coordinates or our map interface, then choose which types of alerts you want to receive (rain, temperature extremes, frost warnings, etc.) and how you want to receive them (SMS, email, app notification).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-5">
+            <h3 class="category-title">Community & Support</h3>
+            
+            <div class="accordion" id="supportFAQ">
+              <div class="card faq-card">
+                <div class="card-header" id="headingTen" data-bs-toggle="collapse" data-bs-target="#collapseTen">
+                  <h5>How do I participate in the community forum?</h5>
+                </div>
+                <div id="collapseTen" class="collapse" data-bs-parent="#supportFAQ">
+                  <div class="card-body">
+                    The Community Forum is accessible from the main menu. You can browse existing discussions by topic, create new threads, or respond to other users' questions. Forums are moderated to ensure respectful and helpful interactions.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card faq-card">
+                <div class="card-header" id="headingEleven" data-bs-toggle="collapse" data-bs-target="#collapseEleven">
+                  <h5>What should I do if I encounter a problem?</h5>
+                </div>
+                <div id="collapseEleven" class="collapse" data-bs-parent="#supportFAQ">
+                  <div class="card-body">
+                    For technical issues, please click on "Help" in the bottom corner of any page or email support@agrolink.com. Our support team is available 7 days a week from 8 AM to 8 PM. For urgent matters, you can call our helpline at 1800-123-4567.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card faq-card">
+                <div class="card-header" id="headingTwelve" data-bs-toggle="collapse" data-bs-target="#collapseTwelve">
+                  <h5>How can I get training on using AgroLink?</h5>
+                </div>
+                <div id="collapseTwelve" class="collapse" data-bs-parent="#supportFAQ">
+                  <div class="card-body">
+                    We offer free training sessions every Wednesday at 4 PM via our mobile app. You can also access tutorial videos in the "Learning Center" section. For in-person training, check if we have workshops scheduled in your district on our Events page.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 AgroLink. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      $(".navbar-nav a").on('click', function (e) {
+        if (this.hash !== "") {
+          e.preventDefault();
+          const hash = this.hash;
+          $('html, body').animate({ scrollTop: $(hash).offset().top - 70 }, 800);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

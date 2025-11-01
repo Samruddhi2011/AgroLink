@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | Admin Panel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: #333;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-signup {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+    }
+
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Admin Panel Specific Styles */
+    .admin-wrapper {
+      display: flex;
+      min-height: calc(100vh - 70px);
+    }
+    
+    .sidebar {
+      width: 250px;
+      background-color: var(--dark);
+      color: white;
+      padding-top: 20px;
+      flex-shrink: 0;
+    }
+    
+    .sidebar-item {
+      padding: 10px 20px;
+      border-left: 4px solid transparent;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .sidebar-item:hover, .sidebar-item.active {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left-color: var(--secondary);
+    }
+    
+    .sidebar-item i {
+      margin-right: 10px;
+    }
+    
+    .content-area {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    .dashboard-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .dashboard-card h3 {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .stats-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .stats-card .number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+    
+    .stats-card .label {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .stats-card i {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+    
+    .action-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+    
+    .action-btn:hover {
+      background-color: var(--dark);
+    }
+    
+    .delete-btn {
+      background-color: #d32f2f;
+    }
+    
+    .delete-btn:hover {
+      background-color: #b71c1c;
+    }
+    
+    .table th {
+      background-color: var(--secondary);
+      color: var(--dark);
+    }
+    
+    .status-active {
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .status-pending {
+      color: #ff9800;
+      font-weight: bold;
+    }
+    
+    .status-inactive {
+      color: #d32f2f;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">AgroLink Admin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <img src="https://via.placeholder.com/30" class="rounded-circle me-1" alt="Admin"> 
+              Admin
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profile</a></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="homepage.html"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <a href="farmprofilepage.html" class="sidebar-item active">
+        <i class="bi bi-speedometer2"></i> Dashboard
+      </a>
+      <a href="product (1).html" class="sidebar-item">
+        <i class="bi bi-shop"></i> Marketplace
+      </a>
+      
+      
+      
+      <a href="homepage.html" class="sidebar-item mt-5">
+        <i class="bi bi-box-arrow-left"></i> Back to Site
+      </a>
+    </div>
+    
+    <!-- Main Content Area -->
+    <div class="content-area">
+      <div class="container-fluid">
+        <h1 class="mb-4">Admin Dashboard</h1>
+        
+        <!-- Stats Cards -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="stats-card">
+              <i class="bi bi-people"></i>
+              <div class="number">12,485</div>
+              <div class="label">Total Users</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card">
+              <i class="bi bi-tree"></i>
+              <div class="number">1,247</div>
+              <div class="label">Active Listings</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card">
+              <i class="bi bi-currency-rupee"></i>
+              <div class="number">₹24.6M</div>
+              <div class="label">Monthly Transactions</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card">
+              <i class="bi bi-exclamation-triangle"></i>
+              <div class="number">23</div>
+              <div class="label">Open Complaints</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recent Users -->
+        <div class="dashboard-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3><i class="bi bi-people me-2"></i> Recent Users</h3>
+            <button class="btn btn-sm" style="background-color: var(--primary); color: white;">View All</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>User ID</th>
+                  <th>Name</th>
+                  <th>User Type</th>
+                  <th>Location</th>
+                  <th>Registration Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>UID-7824</td>
+                  <td>Rahul Singh</td>
+                  <td>Farmer</td>
+                  <td>Amritsar, Punjab</td>
+                  <td>03-04-2025</td>
+                  <td><span class="status-active">Active</span></td>
+                  <td>
+                    <button class="action-btn"><i class="bi bi-pencil"></i></button>
+                    <button class="action-btn delete-btn"><i class="bi bi-trash"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                    <td>UID-7825</td>
+                    <td>Priya Sharma</td>
+                    <td>Buyer</td>
+                    <td>Delhi</td>
+                    <td>02-04-2025</td>
+                    <td><span class="status-active">Active</span></td>
+                    <td>
+                      <button class="action-btn"><i class="bi bi-pencil"></i></button>
+                      <button class="action-btn delete-btn"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>UID-7826</td>
+                    <td>Mohammed Patel</td>
+                    <td>Farmer</td>
+                    <td>Surat, Gujarat</td>
+                    <td>01-04-2025</td>
+                    <td><span class="status-pending">Pending</span></td>
+                    <td>
+                      <button class="action-btn"><i class="bi bi-pencil"></i></button>
+                      <button class="action-btn delete-btn"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>UID-7827</td>
+                    <td>Sanjay Kumar</td>
+                    <td>Supplier</td>
+                    <td>Coimbatore, Tamil Nadu</td>
+                    <td>31-03-2025</td>
+                    <td><span class="status-inactive">Inactive</span></td>
+                    <td>
+                      <button class="action-btn"><i class="bi bi-pencil"></i></button>
+                      <button class="action-btn delete-btn"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Active Crops -->
+          <div class="dashboard-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3><i class="bi bi-tree me-2"></i> Active Crop Listings</h3>
+              <button class="btn btn-sm" style="background-color: var(--primary); color: white;">View All</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Listing ID</th>
+                    <th>Crop Type</th>
+                    <th>Farmer</th>
+                    <th>Quantity (kg)</th>
+                    <th>Price (₹/kg)</th>
+                    <th>Listed Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CID-3429</td>
+                    <td>Organic Rice</td>
+                    <td>Rahul Singh</td>
+                    <td>1,500</td>
+                    <td>₹75</td>
+                    <td>05-04-2025</td>
+                    <td><span class="status-active">Active</span></td>
+                    <td>
+                      <button class="action-btn"><i class="bi bi-pencil"></i></button>
+                      <button class="action-btn delete-btn"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CID-3428</td>
+                    <td>Wheat</td>
+                    <td>Sunil Verma</td>
+                    <td>2,500</td>
+                    <td>₹30</td>
+                    <td>04-04-2025</td>
+                    <td><span class="status-active">Active</span></td>
+                    <td>
+                      <button class="action-btn"><i class="bi bi-pencil"></i></button>
+                      <button class="action-btn delete-btn"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CID-3427</td>
+                    <td>Cotton</td>
+                    <td>Mohammed Patel</td>
+                    <td>800</td>
+                    <td>₹120</td>
+                    <td>03-04-2025</td>
+                    <td><span class="status-pending">Under Review</span></td>
+                    <td>
+                      <button class="action-btn"><i class="bi bi-pencil"></i></button>
+                      <button class="action-btn delete-btn"><i class="bi bi-trash"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Recent Complaints -->
+          <div class="dashboard-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3><i class="bi bi-exclamation-triangle me-2"></i> Recent Complaints</h3>
+              <button class="btn btn-sm" style="background-color: var(--primary); color: white;">View All</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Complaint ID</th>
+                    <th>Subject</th>
+                    <th>User</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>COMP-2143</td>
+                    <td>Payment not received</td>
+                    <td>Rahul Singh</td>
+                    <td>05-04-2025</td>
+                    <td>Transaction</td>
+                    <td><span class="status-pending">Open</span></td>
+                    <td>
+                      <button class="action-btn"><i class="bi bi-eye"></i></button>
+                      <button class="action-btn delete-btn"><i class="bi bi-x-lg"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>COMP-2142</td>
+                    <td>Quality not as described</td>
+                    <td>Priya Sharma</td>
+                    <td>04-04-2025</td>
+                    <td>Product</td>
+                    <td><span class="status-pending">Open</span></td>
+                    <td>
+                      <button class="action-btn"><i class="bi bi-eye"></i></button>
+                      <button class="action-btn delete-btn"><i class="bi bi-x-lg"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>COMP-2141</td>
+                    <td>Delivery delayed</td>
+                    <td>Sunil Verma</td>
+                    <td>03-04-2025</td>
+                    <td>Logistics</td>
+                    <td><span class="status-active">Resolved</span></td>
+                    <td>
+                      <button class="action-btn"><i class="bi bi-eye"></i></button>
+                      <button class="action-btn delete-btn"><i class="bi bi-x-lg"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <script>
+      $(document).ready(function () {
+        // Toggle sidebar items active state
+        $(".sidebar-item").on('click', function (e) {
+          $(".sidebar-item").removeClass("active");
+          $(this).addClass("active");
+        });
+      });
+    </script>
+  </body>
+  </html>

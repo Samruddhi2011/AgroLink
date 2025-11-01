@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | Buyer Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-signup {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .sidebar {
+      background-color: white;
+      height: calc(100vh - 56px);
+      position: fixed;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar-link {
+      display: block;
+      padding: 15px;
+      color: #333;
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .sidebar-link:hover, .sidebar-link.active {
+      background-color: var(--light);
+      border-left: 3px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .sidebar-link i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+
+    .dashboard-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      height: 100%;
+    }
+
+    .circle-stat {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .stat-primary {
+      background-color: var(--primary);
+    }
+
+    .stat-warning {
+      background-color: #ffc107;
+    }
+
+    .stat-info {
+      background-color: #0dcaf0;
+    }
+
+    .stat-text {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .crop-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .crop-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .crop-img {
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .crop-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: var(--primary);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .seller-info {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .seller-img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--dark);
+      border-color: var(--dark);
+    }
+
+    .btn-outline-primary {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-outline-primary:hover {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .progress-bar {
+      background-color: var(--primary);
+    }
+
+    .search-bar {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      padding-left: 40px;
+      border-radius: 20px;
+    }
+
+    .search-bar i {
+      position: absolute;
+      left: 15px;
+      top: 10px;
+      color: #888;
+    }
+
+    .nav-tabs .nav-link.active {
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+      font-weight: bold;
+    }
+
+    .nav-tabs .nav-link {
+      color: #555;
+    }
+
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: #dc3545;
+      color: white;
+      font-size: 0.7rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .order-item {
+      border-left: 4px solid var(--primary);
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 15px;
+    }
+
+    .cart-details {
+      flex-grow: 1;
+    }
+
+    .cart-price {
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .cart-actions {
+      width: 80px;
+      text-align: right;
+    }
+
+    .recommended-slider {
+      display: flex;
+      overflow-x: auto;
+      padding: 10px 0;
+      gap: 15px;
+    }
+
+    .recommended-card {
+      min-width: 200px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .user-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+      object-fit: cover;
+    }
+
+    .quick-action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .quick-action-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      color: var(--primary);
+    }
+
+    .quick-action-btn i {
+      font-size: 24px;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="#">
+              <i class="fas fa-bell"></i>
+              <span class="notification-badge">3</span>
+            </a>
+          </li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="#">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="notification-badge">2</span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+              <img src="cust.jpg" class="rounded-circle me-2" width="32" height="32" alt="User">
+              Vijay Merchant
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="homepage.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <div class="sidebar" style="width: 250px;">
+    <div class="p-3">
+      <div class="user-profile">
+        <img src="cust.jpg" alt="User" class="user-avatar">
+        <div>
+          <h6 class="mb-0">Vijay Merchant</h6>
+          <small class="text-muted">Premium Buyer</small>
+        </div>
+      </div>
+    </div>
+    <a href="farmprofilepage.html" class="sidebar-link active">
+      <i class="fas fa-tachometer-alt"></i> Dashboard
+    </a>
+    <a href="product (1).html" class="sidebar-link">
+      <i class="fas fa-shopping-basket"></i> Marketplace
+    </a>
+    <a href="#" class="sidebar-link">
+      <i class="fas fa-shopping-cart"></i> My Cart
+    </a>
+    
+    
+    
+    
+    
+    <a href="agrolink-contact-page.html" class="sidebar-link">
+      <i class="fas fa-question-circle"></i> Help & Support
+    </a>
+    <a href="homepage.html" class="sidebar-link text-danger">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="container-fluid p-0">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Buyer Dashboard</h2>
+        <div>
+          <span class="me-2">Today: April 6, 2025</span>
+          <button class="btn btn-outline-primary">
+            <i class="fas fa-download me-1"></i> Export Reports
+          </button>
+        </div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" class="form-control form-control-lg" placeholder="Search for crops, sellers, or locations...">
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="row mb-4">
+        <div class="col-md-2">
+          <a href="#" class="quick-action-btn">
+            <i class="fas fa-carrot"></i>
+            <span>Vegetables</span>
+          </a>
+        </div>
+        <div class="col-md-2">
+          <a href="#" class="quick-action-btn">
+            <i class="fas fa-apple-alt"></i>
+            <span>Fruits</span>
+          </a>
+        </div>
+        <div class="col-md-2">
+          <a href="#" class="quick-action-btn">
+            <i class="fas fa-seedling"></i>
+            <span>Grains</span>
+          </a>
+        </div>
+        <div class="col-md-2">
+          <a href="#" class="quick-action-btn">
+            <i class="fas fa-leaf"></i>
+            <span>Organic</span>
+          </a>
+        </div>
+        <div class="col-md-2">
+          <a href="#" class="quick-action-btn">
+            <i class="fas fa-truck"></i>
+            <span>Bulk Order</span>
+          </a>
+        </div>
+        <div class="col-md-2">
+          <a href="#" class="quick-action-btn">
+            <i class="fas fa-percent"></i>
+            <span>Deals</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Statistics Cards -->
+      <div class="row mb-4">
+        <div class="col-md-4 mb-4">
+          <div class="dashboard-card">
+            <div class="circle-stat stat-primary">5</div>
+            <div class="stat-text">Total Orders</div>
+            <p class="text-center text-muted mt-2">Last 30 days</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="dashboard-card">
+            <div class="circle-stat stat-warning">₹15,800</div>
+            <div class="stat-text">Total Spent</div>
+            <p class="text-center text-muted mt-2">Last 30 days</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="dashboard-card">
+            <div class="circle-stat stat-info">3</div>
+            <div class="stat-text">Active Deliveries</div>
+            <p class="text-center text-muted mt-2">Currently in transit</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Orders -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="dashboard-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="mb-0">Recent Orders</h5>
+              <a href="#" class="text-decoration-none">View All</a>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Items</th>
+                    <th>Seller</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="order-item">
+                    <td>#ORD-8752</td>
+                    <td>Apr 4, 2025</td>
+                    <td>Organic Wheat (500kg)</td>
+                    <td>Harpreet Singh</td>
+                    <td>₹17,500</td>
+                    <td><span class="badge bg-warning">In Transit</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary">Track</button>
+                    </td>
+                  </tr>
+                  <tr class="order-item">
+                    <td>#ORD-8743</td>
+                    <td>Mar 28, 2025</td>
+                    <td>Basmati Rice (200kg)</td>
+                    <td>Rajesh Kumar</td>
+                    <td>₹17,000</td>
+                    <td><span class="badge bg-success">Delivered</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary">Review</button>
+                    </td>
+                  </tr>
+                  <tr class="order-item">
+                    <td>#ORD-8725</td>
+                    <td>Mar 20, 2025</td>
+                    <td>Fresh Tomatoes (100kg)</td>
+                    <td>Lakshmi Devi</td>
+                    <td>₹4,000</td>
+                    <td><span class="badge bg-success">Delivered</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-outline-primary">Review</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shopping Cart & Recommendations -->
+      <div class="row mb-4">
+        <div class="col-md-5 mb-4">
+          <div class="dashboard-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="mb-0">My Cart (2)</h5>
+              <a href="#" class="btn btn-primary btn-sm">Checkout</a>
+            </div>
+
+            <div class="cart-item">
+              <img src="apple.jpg" class="cart-img" alt="Organic Apples">
+              <div class="cart-details">
+                <h6 class="mb-1">Himalayan Apples</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <small class="text-muted">Quantity: 50kg</small>
+                  </div>
+                  <span class="cart-price">₹6,000</span>
+                </div>
+              </div>
+              <div class="cart-actions">
+                <button class="btn btn-sm btn-link text-danger"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+
+            <div class="cart-item">
+              <img src="cotton.jpg" class="cart-img" alt="Raw Cotton">
+              <div class="cart-details">
+                <h6 class="mb-1">Raw Cotton</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <small class="text-muted">Quantity: 100kg</small>
+                  </div>
+                  <span class="cart-price">₹6,500</span>
+                </div>
+              </div>
+              <div class="cart-actions">
+                <button class="btn btn-sm btn-link text-danger"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-3 pt-3 border-top">
+              <h6 class="fw-bold">Total:</h6>
+              <h6 class="fw-bold text-primary">₹12,500</h6>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-7 mb-4">
+          <div class="dashboard-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="mb-0">Recommended For You</h5>
+              <a href="#" class="text-decoration-none">View All</a>
+            </div>
+
+            <div class="recommended-slider">
+              <!-- Recommendation 1 -->
+              <div class="recommended-card">
+                <img src="R.jpg" class="img-fluid" alt="Recommended">
+                <div class="p-2">
+                  <h6 class="mb-1">Organic Potatoes</h6>
+                  <p class="mb-1 text-primary fw-bold">₹25/kg</p>
+                  <small class="text-muted">Seller: Anand Farms</small>
+                </div>
+              </div>
+
+              <!-- Recommendation 2 -->
+              <div class="recommended-card">
+                <img src="YELLOWLENTIL.jpg" class="img-fluid" alt="Recommended">
+                <div class="p-2">
+                  <h6 class="mb-1">Yellow Lentils</h6>
+                  <p class="mb-1 text-primary fw-bold">₹110/kg</p>
+                  <small class="text-muted">Seller: Punjab Organics</small>
+                </div>
+              </div>
+
+              <!-- Recommendation 3 -->
+              <div class="recommended-card">
+                <img src="orange.jpg" class="img-fluid" alt="Recommended">
+                <div class="p-2">
+                  <h6 class="mb-1">Fresh Oranges</h6>
+                  <p class="mb-1 text-primary fw-bold">₹80/kg</p>
+                  <small class="text-muted">Seller: Nagpur Farms</small>
+                </div>
+              </div>
+
+              <!-- Recommendation 4 -->
+              <div class="recommended-card">
+                <img src="mus.jpg" class="img-fluid" alt="Recommended">
+                <div class="p-2">
+                  <h6 class="mb-1">Mustard Seeds</h6>
+                  <p class="mb-1 text-primary fw-bold">₹95/kg</p>
+                  <small class="text-muted">Seller: Rajasthan Agro</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="dashboard-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="mb-0">Market Insights</h5>
+              <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  This Month
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">This Week</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">Last 3 Months</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">Wheat</span>
+                  <p class="mb-0 text-muted small">Average price per kg</p>
+                </div>
+                <div class="text-end">
+                  <span class="fw-bold">₹35</span>
+                  <p class="mb-0 text-success small">
+                    <i class="fas fa-arrow-up"></i> 5%
+                  </p>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">Rice</span>
+                  <p class="mb-0 text-muted small">Average price per kg</p>
+                </div>
+                <div class="text-end">
+                  <span class="fw-bold">₹85</span>
+                  <p class="mb-0 text-danger small">
+                    <i class="fas fa-arrow-down"></i> 2%
+                  </p>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">Potatoes</span>
+                  <p class="mb-0 text-muted small">Average price per kg</p>
+                </div>
+                <div class="text-end">
+                  <span class="fw-bold">₹25</span>
+                  <p class="mb-0 text-success small">
+                    <i class="fas fa-arrow-up"></i> 10%
+                  </p>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">Cotton</span>
+                  <p class="mb-0 text-muted small">Average price per kg</p>
+                </div>
+                <div class="text-end">
+                  <span class="fw-bold">₹65</span>
+                  <p class="mb-0 text-success small">
+                    <i class="fas fa-arrow-up"></i> 8%
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dashboard-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="mb-0">Latest Messages</h5>
+              <a href="#" class="text-decoration-none">View All</a>
+            </div>
+
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <img src="farm1.jpg" class="rounded-circle me-2" width="40" height="40" alt="Harpreet">
+                    <div>
+                      <h6 class="mb-0">Harpreet Singh</h6>
+                      <p class="mb-0 text-truncate" style="max-width: 250px;">Your wheat order has been dispatched and will reach you in 2 days.</p>
+                    </div>
+                  </div>
+                  <small class="text-muted">3 hours ago</small>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <img src="farm3.jpg" class="rounded-circle me-2" width="40" height="40" alt="Lakshmi">
+                    <div>
+                      <h6 class="mb-0">Lakshmi Devi</h6>
+                      <p class="mb-0 text-truncate" style="max-width: 250px;">Thank you for your order! Do you need any other vegetables?</p>
+                    </div>
+                  </div>
+                  <small class="text-muted">Yesterday</small>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <img src="communi.jpg" class="rounded-circle me-2" width="40" height="40" alt="AgroLink">
+                    <div>
+                      <h6 class="mb-0">AgroLink Support</h6>
+                      <p class="mb-0 text-truncate" style="max-width: 250px;">We hope you're enjoying our service! Please let us know if you need assistance.</p>
+                    </div>
+                  </div>
+                  <small class="text-muted">2 days ago</small>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Deliveries -->
+      <div class="row">
+        <div class="col-12">
+          <div class="dashboard-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="mb-0">Upcoming Deliveries</h5>
+              <a href="#" class="text-decoration-none">View Calendar</a>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Product</th>
+                    <th>Seller</th>
+                    <th>Expected Delivery</th>
+                    <th>Delivery Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#ORD-8752</td>
+                    <td>Organic Wheat</td>
+                    <td>Harpreet Singh</td>
+                    <td>April 8, 2025</td>
+                    <td>
+                      <div class="progress" style="height: 10px;">
+                        <div class="progress-bar" role="

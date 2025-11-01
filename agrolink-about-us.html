@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Agrolink</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">  
+    <style>
+        body {
+          font-family: 'Segoe UI', sans-serif;
+          background-color: #f1f8e9;
+          color: #333;
+        }
+        .navbar {
+          background-color: #2e7d32;
+        }
+        .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+          color: #fff !important;
+        }
+        .dropdown-menu {
+          background-color: #a5d6a7;
+        }
+        .dropdown-item:hover {
+          background-color: #2e7d32;
+          color: white;
+        }
+        .btn-account {
+          background-color: #fff;
+          color: #2e7d32;
+          font-weight: bold;
+          border-radius: 20px;
+          padding: 5px 15px;
+          margin-left: 15px;
+        }
+        .hero-section {
+          background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(46, 125, 50, 0.9)), url('Agriculture.jpg') no-repeat center center;
+          background-size: cover;
+          color: white;
+          padding: 5rem 0;
+          text-align: center;
+        }
+        .mission-section {
+          padding: 4rem 0;
+          background-color: white;
+        }
+        .mission-card {
+          background-color: white;
+          border-radius: 10px;
+          border: none;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          height: 100%;
+          transition: transform 0.3s;
+        }
+        .mission-card:hover {
+          transform: translateY(-5px);
+        }
+        .mission-card .card-header {
+          background-color: #2e7d32;
+          color: white;
+          border-radius: 10px 10px 0 0;
+          font-weight: bold;
+        }
+        .feature-icon {
+          font-size: 2.5rem;
+          color: #2e7d32;
+          margin-bottom: 1rem;
+        }
+        .stats-section {
+          background-color: #a5d6a7;
+          padding: 3rem 0;
+          text-align: center;
+          color: #1b5e20;
+        }
+        .stat-number {
+          font-size: 2.5rem;
+          font-weight: bold;
+          color: #1b5e20;
+        }
+        .stat-label {
+          font-size: 1.2rem;
+          color: #1b5e20;
+        }
+        .our-people-section {
+            background-color: #f7fbf4;
+            padding: 4rem 0;
+        }
+        .our-people-section h2 {
+            color: #1b5e20;
+        }
+        .our-people-section table {
+            background-color: white;
+        }
+        .table th {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+        }
+        .table td {
+            vertical-align: middle;
+            font-size: 1rem;
+        }
+        .footer {
+          background-color: #1b5e20;
+          color: white;
+          padding: 2rem 0;
+        }
+        .footer a {
+          color: #a5d6a7;
+          text-decoration: none;
+        }
+        .footer a:hover {
+          text-decoration: underline;
+        }
+        .social-icon {
+          font-size: 1.5rem;
+          margin-right: 1rem;
+          color: white;
+        }
+        .social-icon:hover {
+          color: #a5d6a7;
+        }
+      </style>
+</head>
+<body>
+    <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-leaf me-2"></i>AgroLink
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="homepage.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="agrolink-schemes-page.html"> Govt. Schemes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="product (1).html">Market Connect</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="weatherupdate.html">Weather</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="agrolink-about-us.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="agrolink-contact-page.html">Contact</a>
+          </li>
+        </ul>
+  
+        <div class="d-flex">
+          <a href="buyerdash.html" class="btn btn-account">
+            <i class="fas fa-user me-1"></i> My Account
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </nav>  
+
+    <!-- Agrolink Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold">About AgroLink</h1>
+            <p class="lead">Empowering Indian farmers with technology, market access, and information</p>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Vision</h2>
+                <p class="lead">To create a sustainable and digitally empowered agricultural ecosystem where farmers thrive with access to the latest information, technology, and market opportunities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section" style="background-color: #f1f8e9;">
+        <div class="container">
+      
+          <div class="text-center mb-5">
+            <h2 class="fw-bold">Our Mission</h2>
+            <p class="lead">
+              Bridging the gap between farmers and resources for a sustainable agricultural future
+            </p>
+          </div>
+      
+          <!-- Mission Cards -->
+          <div class="row g-4">
+      
+            <!-- Connect -->
+            <div class="col-md-4">
+              <div class="mission-card h-100">
+                <div class="card-header text-center py-3">
+                  <h5 class="mb-0">Connect</h5>
+                </div>
+                <div class="card-body text-center">
+                  <div class="feature-icon">
+                    <i class="fas fa-handshake"></i>
+                  </div>
+                  <h5>Direct Market Access</h5>
+                  <p>
+                    Connecting farmers directly with buyers to eliminate middlemen and ensure fair prices for farm produce.
+                  </p>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Inform -->
+            <div class="col-md-4">
+              <div class="mission-card h-100">
+                <div class="card-header text-center py-3">
+                  <h5 class="mb-0">Inform</h5>
+                </div>
+                <div class="card-body text-center">
+                  <div class="feature-icon">
+                    <i class="fas fa-info-circle"></i>
+                  </div>
+                  <h5>Scheme Awareness</h5>
+                  <p>
+                    Providing comprehensive information about the latest government schemes and subsidies for farmers.
+                  </p>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Empower -->
+            <div class="col-md-4">
+              <div class="mission-card h-100">
+                <div class="card-header text-center py-3">
+                  <h5 class="mb-0">Empower</h5>
+                </div>
+                <div class="card-body text-center">
+                  <div class="feature-icon">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <h5>Agricultural Expertise</h5>
+                  <p>
+                    Offering expert advice on modern farming techniques and sustainable agricultural practices.
+                  </p>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </section>      
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-number" id="farmerCount">0</div>
+                    <div class="stat-label">Farmers Connected</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number" id="stateCount">0</div>
+                    <div class="stat-label">States Covered</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number" id="schemeCount">0</div>
+                    <div class="stat-label">Govt. Schemes</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number" id="marketCount">0</div>
+                    <div class="stat-label">Markets Linked</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our People Section-->
+    <section style="background-color: #f9fdf6; padding: 4rem 0;">
+    <div class="container-fluid">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Our People</h2>
+        <p class="lead">Meet the passionate individuals behind AgroLink</p>
+        <hr style="width: 80px; border: 2px solid #2e7d32; margin: 1rem auto;">
+      </div>
+      <div class="table-responsive">
+        <table class="table align-middle text-center" style="border-radius: 15px ;overflow: hidden;">
+          <thead style="background-color: #2e7d32; color: white;">
+            <tr>
+              <th style="background-color: #4caf50;">TEAM MEMBER</th>
+              <th style="background-color: #4caf50;">ROLE</th>
+              <th style="background-color: #4caf50;">CONTACT</th>
+            </tr>
+          </thead>
+          <tbody style="background-color: white;">
+            <tr>
+              <td class="d-flex align-items-center justify-content-start p-3">
+                <span class="fw-semibold text-dark">Eshan Lamba</span>
+              </td>
+              <td><i class="fas fa-seedling text-success me-1"></i><em>CEO</em></td>
+              <td rowspan="3" class="align-middle">
+                <div class="text-start">
+                  <p class="mb-1"><i class="fas fa-envelope text-success me-2"></i>support@agrolink.in</p>
+                  <p><i class="fas fa-phone-alt text-success me-2"></i>+91-9262946391</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="d-flex align-items-center justify-content-start p-3">
+                <span class="fw-semibold text-dark">Anushka Saxena</span>
+              </td>
+              <td><i class="fas fa-seedling text-success me-1"></i><em>Co-Founder</em></td>
+            </tr>
+            <tr>
+              <td class="d-flex align-items-center justify-content-start p-3">
+                <span class="fw-semibold text-dark">Samruddhi Patodi</span>
+              </td>
+              <td><i class="fas fa-seedling text-success me-1"></i><em>Operations lead</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  
+    <!-- Footer -->
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+  
+        <!-- About -->
+        <div class="col-md-4">
+          <h5><i class="fas fa-leaf me-2"></i>Agrolink</h5>
+          <p>Connecting farmers to resources, markets, and knowledge for sustainable agriculture.</p>
+        </div>
+  
+        <!-- Quick Links -->
+        <div class="col-md-2">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Gov. Schemes</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+  
+        <!-- Government Links -->
+        <div class="col-md-3">
+          <h5>Government Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Ministry of Agriculture</a></li>
+            <li><a href="#">PM-KISAN Portal</a></li>
+            <li><a href="#">Weather Forecast</a></li>
+          </ul>
+        </div>
+  
+        <!-- Contact Info -->
+        <div class="col-md-3">
+          <h5>Contact Us</h5>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt me-2"></i>Krishi Bhavan, Mumbai - 400056</li>
+            <li><i class="fas fa-phone me-2"></i>1800-364-4639 | +91-9262946391</li>
+            <li><i class="fas fa-envelope me-2"></i>info@agrolink.in | support@agrolink.in</li>
+          </ul>
+        </div>
+  
+      </div>
+  
+      <!-- Copyright -->
+      <div class="row mt-3">
+        <div class="col-12 text-center">
+          <p>&copy; 2025 Agrolink. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Scripts -->
+    <script>
+        $(document).ready(function() {
+            // Counter Animation
+            function animateCounter(elementId, finalValue, duration) {
+                let startValue = 0;
+                let increment = Math.ceil(finalValue / (duration / 50));
+                let counter = setInterval(function() {
+                    startValue += increment;
+                    if (startValue >= finalValue) {
+                        clearInterval(counter);
+                        startValue = finalValue;
+                    }
+                    $("#" + elementId).text(startValue.toLocaleString());
+                }, 50);
+            }
+            
+            // Check if element is in viewport
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            // Trigger counter animation when stats section is in viewport
+            let counted = false;
+            $(window).scroll(function() {
+                if (isElementInViewport(document.querySelector('.stats-section')) && !counted) {
+                    animateCounter('farmerCount', 250000, 2000);
+                    animateCounter('stateCount', 28, 1500);
+                    animateCounter('schemeCount', 45, 1500);
+                    animateCounter('marketCount', 350, 2000);
+                    counted = true;
+                }
+            });
+            
+            // Trigger once if already in viewport on page load
+            if (isElementInViewport(document.querySelector('.stats-section'))) {
+                animateCounter('farmerCount', 250000, 2000);
+                animateCounter('stateCount', 28, 1500);
+                animateCounter('schemeCount', 45, 1500);
+                animateCounter('marketCount', 350, 2000);
+                counted = true;
+            }
+        });
+    </script>
+</body>
+</html>

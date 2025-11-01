@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | Login</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f8e9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #333;
+    }
+    .navbar {
+      background: #2e7d32;
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+    }
+    .dropdown-menu {
+      background-color: #a5d6a7;
+    }
+    .dropdown-item:hover {
+      background-color: #2e7d32;
+      color: white;
+    }
+    .main-content {
+      flex: 1;
+    }
+    .section-title {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+      color: #1b5e20;
+    }
+    .login-container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    .login-image {
+      background-image: url('/api/placeholder/800/600');
+      background-size: cover;
+      background-position: center;
+      min-height: 400px;
+    }
+    .login-form {
+      padding: 2rem;
+    }
+    .login-form h2 {
+      color: #2e7d32;
+      margin-bottom: 1rem;
+    }
+    .btn-login {
+      background: #2e7d32;
+      color: #fff;
+      border-radius: 5px;
+      border-color: #2e7d32;
+      width: 100%;
+      padding: 10px;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    .btn-login:hover {
+      background: #1c4b1e;
+    }
+    .footer {
+      background: #1b5e20;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .form-check-input:checked {
+      background-color: #2e7d32;
+      border-color: #2e7d32;
+    }
+    .social-login img {
+      width: 50px;
+      height: 50px;
+    }
+    .security-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      color: #666;
+      font-size: 14px;
+    }
+    .security-badge img {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-leaf me-2"></i>AgroLink
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="schemesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Govt. Schemes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="schemesDropdown">
+                        <li><a class="dropdown-item" href="#">PM-KISAN</a></li>
+                        <li><a class="dropdown-item" href="#">Kisan Credit Card</a></li>
+                        <li><a class="dropdown-item" href="#">Soil Health Card</a></li>
+                        <li><a class="dropdown-item" href="#">Pradhan Mantri Fasal Bima Yojana</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Market Connect</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Weather</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+  <div class="main-content">
+    <div class="container">
+      <h2 class="section-title">Welcome to AgroLink</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="login-container">
+            <div class="row g-0">
+              <div class="col-md-6 d-none d-md-block login-image"></div>
+              <div class="col-md-6 login-form">
+                <h2>Sign In</h2>
+                <div class="alert alert-info">
+                  <i class="fas fa-info-circle me-2"></i>
+                  Sign in to access market prices, forecasts & advice.
+                </div>
+                <form id="loginForm">
+                  <div class="mb-3">
+                    <label>Email Address</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                      <input type="email" class="form-control" id="email" required>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label>Password</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                      <input type="password" class="form-control" id="password" required>
+                      <button type="button" class="btn btn-outline-secondary" id="togglePassword"><i class="fas fa-eye"></i></button>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="rememberMe">
+                      <label class="form-check-label">Remember me</label>
+                    </div>
+                    <a href="#" class="text-success">Forgot password?</a>
+                  </div>
+                  <button type="submit" class="btn-login">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                  </button>
+                  <div id="loginSuccessMsg" class="alert alert-success mt-3 text-center" style="display: none;">
+                    <i class="fas fa-check-circle me-2"></i>Successfully signed in! Welcome to AgroLink.
+                  </div>
+                  <div class="text-center mt-3">
+                    Don't have an account? <a href="#" class="text-success">Register now</a>
+                  </div>
+                  <div class="social-login text-center mt-3">
+                    <p>Or login with</p>
+                    <img src="google.jpg" alt="Gmail">
+                  </div>
+                </form>
+                <div class="security-badge text-center">
+                  <img src="/api/placeholder/16/16" alt="Security"> Secure SSL Connection | <img src="/api/placeholder/16/16" alt="Privacy"> Your data is protected
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 AgroLink. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Service</a> |
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $('#togglePassword').click(function() {
+      const pwd = $('#password');
+      const type = pwd.attr('type') === 'password' ? 'text' : 'password';
+      pwd.attr('type', type);
+      $(this).find('i').toggleClass('fa-eye fa-eye-slash');
+    });
+    $('#loginForm').on('submit', function(e) {
+      e.preventDefault();
+      const email = $('#email').val();
+      const pwd = $('#password').val();
+      if (!email || !pwd) {
+        alert('Please fill all fields.');
+      return;
+    }
+     $('.btn-login').html('<span class="spinner-border spinner-border-sm"></span> Signing in...').prop('disabled', true);
+     $('#loginSuccessMsg').hide(); // hide old success message
+     setTimeout(() => {
+      $('.btn-login').html('<i class="fas fa-sign-in-alt me-2"></i>Login').prop('disabled', false);
+      $('#loginSuccessMsg').fadeIn(); // show success message
+     }, 1500);
+    });
+  </script>
+</body>
+</html>

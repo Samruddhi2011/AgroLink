@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | Shopping Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: #333;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-signup {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .section-title {
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+    }
+
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Shopping Cart Specific Styles */
+    .cart-header {
+      background-color: var(--primary);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .cart-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
+    }
+
+    .cart-item img {
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .cart-total {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .btn-continue-shopping, .btn-checkout {
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-weight: bold;
+    }
+
+    .btn-continue-shopping {
+      background-color: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-checkout {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .quantity-selector {
+      width: 80px;
+    }
+
+    .remove-item {
+      color: #dc3545;
+      cursor: pointer;
+    }
+
+    .remove-item:hover {
+      text-decoration: underline;
+    }
+
+    .cart-summary {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .recommended-products {
+      margin-top: 3rem;
+    }
+
+    .product-card {
+      border: none;
+      transition: transform 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="homepage.html">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Features
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="product (1).html">Marketplace</a></li>
+              <li><a class="dropdown-item" href="weatherupdate.html">News</a></li>
+              <li><a class="dropdown-item" href="expertadvice.html">Expert Advice</a></li>
+              <li><a class="dropdown-item" href="agrolink-schemes-page.html">Government Sc</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button onclick="window.location.href='signup.html'" class="btn btn-light btn-signup">Sign Up</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Cart Header -->
+  <section class="cart-header">
+    <div class="container">
+      <h1>Your Shopping Cart</h1>
+      <p class="lead">Review your items before checkout</p>
+    </div>
+  </section>
+
+  <!-- Shopping Cart Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Cart Items -->
+        <div class="col-lg-8">
+          <div class="cart-item d-flex align-items-center">
+            <div class="me-3">
+              <img src="corn.shp.jpg" alt="Organic Seeds" class="rounded">
+            </div>
+            <div class="flex-grow-1">
+              <h5>Premium Organic Corn Seeds</h5>
+              <p class="text-muted">High-yield, drought-resistant variety</p>
+              <div class="d-flex align-items-center">
+                <select class="form-select quantity-selector me-3">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <p class="mb-0 me-3">₹1,200 per bag</p>
+                <p class="fw-bold mb-0">₹2,400</p>
+              </div>
+            </div>
+            <div>
+              <span class="remove-item"><i class="bi bi-trash"></i> Remove</span>
+            </div>
+          </div>
+
+          <div class="cart-item d-flex align-items-center">
+            <div class="me-3">
+              <img src="biofert.jpg" alt="Bio Fertilizer" class="rounded">
+            </div>
+            <div class="flex-grow-1">
+              <h5>AgroPro Bio Fertilizer</h5>
+              <p class="text-muted">Organic nitrogen-rich formula (5kg)</p>
+              <div class="d-flex align-items-center">
+                <select class="form-select quantity-selector me-3">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <p class="mb-0 me-3">₹850 per bag</p>
+                <p class="fw-bold mb-0">₹850</p>
+              </div>
+            </div>
+            <div>
+              <span class="remove-item"><i class="bi bi-trash"></i> Remove</span>
+            </div>
+          </div>
+
+          <div class="cart-item d-flex align-items-center">
+            <div class="me-3">
+              <img src="irrkit.jpg" alt="Drip Irrigation Kit" class="rounded">
+            </div>
+            <div class="flex-grow-1">
+              <h5>Smart Drip Irrigation Kit</h5>
+              <p class="text-muted">Water-efficient system with moisture sensors</p>
+              <div class="d-flex align-items-center">
+                <select class="form-select quantity-selector me-3">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <p class="mb-0 me-3">₹3,500 per kit</p>
+                <p class="fw-bold mb-0">₹3,500</p>
+              </div>
+            </div>
+            <div>
+              <span class="remove-item"><i class="bi bi-trash"></i> Remove</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="col-lg-4">
+          <div class="cart-summary">
+            <h4 class="mb-4">Order Summary</h4>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Subtotal (3 items)</span>
+              <span>₹6,750</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Shipping</span>
+              <span>₹250</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Tax (5%)</span>
+              <span>₹337.50</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between mb-4 cart-total">
+              <span>Total</span>
+              <span>₹7,337.50</span>
+            </div>
+            <div class="mb-3">
+              <label for="coupon" class="form-label">Apply Coupon</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="coupon" placeholder="Enter coupon code">
+                <button class="btn btn-outline-success" type="button">Apply</button>
+              </div>
+            </div>
+            <button class="btn btn-checkout w-100 mb-3">Proceed to Checkout</button>
+            <button class="btn btn-continue-shopping w-100" onclick="window.location.href='marketplace.html'">Continue Shopping</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended Products Section -->
+  <section class="recommended-products py-5 bg-white">
+    <div class="container">
+      <h2 class="section-title">You Might Also Like</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card product-card">
+            <img src="/api/placeholder/400/320" class="card-img-top" alt="Soil Testing Kit">
+            <div class="card-body">
+              <h5 class="card-title">Advanced Soil Testing Kit</h5>
+              <p class="card-text">Analyze soil nutrients, pH levels, and moisture content.</p>
+              <p class="fw-bold">₹1,999</p>
+              <button class="btn btn-sm btn-success" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card product-card">
+            <img src="/api/placeholder/400/320" class="card-img-top" alt="Organic Pesticide">
+            <div class="card-body">
+              <h5 class="card-title">Neem-Based Organic Pesticide</h5>
+              <p class="card-text">Natural pest control solution for organic farming.</p>
+              <p class="fw-bold">₹750</p>
+              <button class="btn btn-sm btn-success" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card product-card">
+            <img src="/api/placeholder/400/320" class="card-img-top" alt="Weather Station">
+            <div class="card-body">
+              <h5 class="card-title">Mini Weather Station</h5>
+              <p class="card-text">Monitor temperature, humidity, and rainfall on your farm.</p>
+              <p class="fw-bold">₹2,499</p>
+              <button class="btn btn-sm btn-success" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 AgroLink. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      // Smooth scrolling for in-page links
+      $(".navbar-nav a").on('click', function (e) {
+        const href = $(this).attr("href");
+        if (href && href.startsWith("#")) {
+          e.preventDefault();
+          const hash = this.hash;
+          $('html, body').animate({ scrollTop: $(hash).offset().top - 70 }, 800);
+        }
+      });
+
+      // Quantity selector functionality
+      $(".quantity-selector").on('change', function() {
+        updateCartTotals();
+      });
+
+      // Remove item functionality
+      $(".remove-item").on('click', function() {
+        $(this).closest('.cart-item').fadeOut(300, function() {
+          $(this).remove();
+          updateCartTotals();
+        });
+      });
+    });
+
+    // Update cart totals when quantities change
+    function updateCartTotals() {
+      // This would be more sophisticated in a real implementation
+      console.log("Cart updated");
+    }
+
+    // Add to cart functionality for recommended products
+    function addToCart(button) {
+      const product = $(button).closest('.card');
+      const productName = product.find('.card-title').text();
+      
+      // Show feedback to user
+      $(button).text("Added to Cart");
+      $(button).removeClass("btn-success").addClass("btn-secondary");
+      
+      setTimeout(function() {
+        $(button).text("Add to Cart");
+        $(button).removeClass("btn-secondary").addClass("btn-success");
+      }, 2000);
+      
+      console.log(`Added ${productName} to cart`);
+    }
+  </script>
+  
+</body>
+</html>

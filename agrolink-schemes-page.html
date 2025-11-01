@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Schemes | Agrolink</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">  
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f8e9;
+      color: #333;
+    }
+    .navbar {
+      background-color: #2e7d32;
+    }
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+    .dropdown-menu {
+      background-color: #a5d6a7;
+    }
+    .dropdown-item:hover {
+      background-color: #2e7d32;
+      color: white;
+    }
+    .btn-account {
+      background-color: #fff;
+      color: #2e7d32;
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+    .dashboard-header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 2rem 0;
+    }
+    .dashboard-card {
+      height: 100%;
+      transition: transform 0.3s;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .dashboard-card:hover {
+      transform: translateY(-5px);
+    }
+    .dashboard-card .card-header {
+      background-color: #2e7d32;
+      color: white;
+      border-radius: 10px 10px 0 0;
+      font-weight: bold;
+    }
+    .crop-trend-up {
+      color: #4caf50;
+    }
+    .crop-trend-down {
+      color: #f44336;
+    }
+    .crop-trend-stable {
+      color: #ff9800;
+    }
+    .weather-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .weather-temp {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .footer {
+      background-color: #1b5e20;
+      color: white;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .alert-info {
+      background-color: #a5d6a7;
+      border-color: #2e7d32;
+      color: #1b5e20;
+    }
+    /* Scheme styles */
+    .scheme-card {
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #2e7d32;
+      transition: all 0.3s ease;
+    }
+    .scheme-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+    .scheme-header {
+      background-color: #f1f8e9;
+      border-bottom: 1px solid #a5d6a7;
+    }
+    .scheme-badge {
+      background-color: #2e7d32;
+      color: white;
+      font-size: 0.8rem;
+    }
+    .apply-btn {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+    }
+    .apply-btn:hover {
+      background-color: #1b5e20;
+      color: white;
+    }
+    .search-bar {
+      border-radius: 20px;
+      border: 2px solid #a5d6a7;
+    }
+    .search-btn {
+      border-radius: 0 20px 20px 0;
+      background-color: #2e7d32;
+      color: white;
+    }
+    .filter-btn {
+      background-color: #a5d6a7;
+      color: #1b5e20;
+      border: none;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    .filter-btn.active {
+      background-color: #2e7d32;
+      color: white;
+    }
+    .scheme-icon {
+      font-size: 2.5rem;
+      color: #2e7d32;
+    }
+    .footer {
+      background-color: #1b5e20;
+      color: white;
+      padding: 2rem 0;
+    }
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .social-icon {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      color: white;
+    }
+    .social-icon:hover {
+      color: #a5d6a7;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-leaf me-2"></i>AgroLink
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="homepage.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="agrolink-schemes-page.html"> Govt. Schemes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="product (1).html">Market Connect</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="weatherupdate.html">Weather</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="agrolink-about-us.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="agrolink-contact-page.html">Contact</a>
+          </li>
+        </ul>
+        
+        <div class="d-flex">
+          <a href="buyerdash.html" class="btn btn-account">
+            <i class="fas fa-user me-1"></i> My Account
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav> 
+
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h1><i class="fas fa-landmark me-2"></i>Government Schemes</h1>
+          <p class="lead">Access information on agricultural subsidies, loans, and policies by the Government of India</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container my-4">
+    <!-- Alerts and Notifications -->
+    <div class="alert alert-info" role="alert">
+      <i class="fas fa-bell me-2"></i> <strong>New Update:</strong> Applications for PM-KISAN's 15th installment are now open. Apply before the deadline!
+      <button type="button" class="btn-close float-end"></button>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="text-center my-4">
+      <button type="button" class="btn filter-btn active" data-filter="all">All</button>
+      <button type="button" class="btn filter-btn" data-filter="subsidy">Subsidy</button>
+      <button type="button" class="btn filter-btn" data-filter="insurance">Insurance</button>
+      <button type="button" class="btn filter-btn" data-filter="loan">Loan</button>
+    </div>
+
+    <!-- Schemes List -->
+    <div class="schemes-container">
+      <!-- PM-KISAN Scheme -->
+      <div class="card scheme-card" data-category="subsidy">
+        <div class="card-header scheme-header">
+          <div class="row align-items-center">
+            <div class="col-md-1 text-center">
+              <i class="fas fa-hand-holding-usd scheme-icon"></i>
+            </div>
+            <div class="col-md-9">
+              <h5 class="mb-0">PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)</h5>
+              <div>
+                <span class="badge scheme-badge me-2">Subsidy</span>
+                <span class="badge bg-success me-2">Active</span>
+                <small><i class="far fa-calendar-alt me-1"></i> Last Updated: March 15, 2025</small>
+              </div>
+            </div>
+            <div class="col-md-2 text-end">
+              <a href="https://pmkisan.gov.in/" class="btn apply-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>An income support scheme providing up to ₹6,000 per year to farmer families in three equal installments of ₹2,000 each. The scheme covers small and marginal farmers with landholdings up to 2 hectares.</p>
+          <div class="row">
+            <div class="col-md-4">
+              <h6><i class="fas fa-check-circle text-success me-2"></i>Benefits:</h6>
+              <ul>
+                <li>Direct income support of ₹6,000 annually</li>
+                <li>Money transferred directly to bank accounts</li>
+                <li>No intermediaries involved</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6><i class="fas fa-file-alt text-primary me-2"></i>Documents Required:</h6>
+              <ul>
+                <li>Aadhaar Card</li>
+                <li>Land Records</li>
+                <li>Bank Account Details</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6><i class="fas fa-info-circle text-warning me-2"></i>Eligibility:</h6>
+              <ul>
+                <li>Small and marginal farmers</li>
+                <li>Land holding up to 2 hectares</li>
+                <li>All states and UTs covered</li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-end mt-2">
+            <a href="#" class="btn btn-sm btn-outline-success me-2"><i class="fas fa-download me-1"></i> Download Guidelines</a>
+            <a href="https://pmkisan.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">
+              <i class="fas fa-info-circle me-1"></i> More Details
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pradhan Mantri Fasal Bima Yojana -->
+      <div class="card scheme-card" data-category="insurance">
+        <div class="card-header scheme-header">
+          <div class="row align-items-center">
+            <div class="col-md-1 text-center">
+              <i class="fas fa-shield-alt scheme-icon"></i>
+            </div>
+            <div class="col-md-9">
+              <h5 class="mb-0">PMFBY (Pradhan Mantri Fasal Bima Yojana)</h5>
+              <div>
+                <span class="badge scheme-badge me-2">Insurance</span>
+                <span class="badge bg-success me-2">Active</span>
+                <small><i class="far fa-calendar-alt me-1"></i> Last Updated: February 20, 2025</small>
+              </div>
+            </div>
+            <div class="col-md-2 text-end">
+              <a href="https://pmfby.gov.in/" class="btn apply-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>A crop insurance scheme providing financial support to farmers suffering crop loss/damage arising out of unforeseen events. It aims to stabilize the income of farmers to ensure their continuance in farming.</p>
+          <div class="row">
+            <div class="col-md-4">
+              <h6><i class="fas fa-check-circle text-success me-2"></i>Benefits:</h6>
+              <ul>
+                <li>Comprehensive risk coverage</li>
+                <li>Low premium rates</li>
+                <li>Full crop cycle coverage</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6><i class="fas fa-file-alt text-primary me-2"></i>Documents Required:</h6>
+              <ul>
+                <li>Land Records / Tenancy Certificate</li>
+                <li>Aadhaar Card</li>
+                <li>Bank Account Details</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6><i class="fas fa-info-circle text-warning me-2"></i>Eligibility:</h6>
+              <ul>
+                <li>All farmers growing notified crops</li>
+                <li>Both loanee and non-loanee farmers</li>
+                <li>Tenant farmers with proper documentation</li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-end mt-2">
+            <a href="https://pmfby.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">
+              <i class="fas fa-info-circle me-1"></i> More Details
+            </a>            
+          </div>
+        </div>
+      </div>
+
+      <!-- Kisan Credit Card -->
+      <div class="card scheme-card" data-category="loan">
+        <div class="card-header scheme-header">
+          <div class="row align-items-center">
+            <div class="col-md-1 text-center">
+              <i class="fas fa-credit-card scheme-icon"></i>
+            </div>
+            <div class="col-md-9">
+              <h5 class="mb-0">KCC (Kisan Credit Card)</h5>
+              <div>
+                <span class="badge scheme-badge me-2">Loan</span>
+                <span class="badge bg-success me-2">Active</span>
+                <small><i class="far fa-calendar-alt me-1"></i> Last Updated: January 5, 2025</small>
+              </div>
+            </div>
+            <div class="col-md-2 text-end">
+              <a href="https://fasalrin.gov.in/" class="btn apply-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>The Kisan Credit Card scheme provides farmers with affordable credit for their agricultural needs. The scheme covers financial requirements for agriculture, allied activities, and non-farm activities.</p>
+          <div class="row">
+            <div class="col-md-4">
+              <h6><i class="fas fa-check-circle text-success me-2"></i>Benefits:</h6>
+              <ul>
+                <li>Flexible credit limits</li>
+                <li>Low interest rates (4% with interest subvention)</li>
+                <li>Personal accident insurance coverage</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6><i class="fas fa-file-alt text-primary me-2"></i>Documents Required:</h6>
+              <ul>
+                <li>Land ownership records</li>
+                <li>Identity proof (Aadhaar/PAN)</li>
+                <li>Passport size photographs</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6><i class="fas fa-info-circle text-warning me-2"></i>Eligibility:</h6>
+              <ul>
+                <li>Individual farmers</li>
+                <li>Joint borrowers</li>
+                <li>Tenant farmers with proper documentation</li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-end mt-2">
+            <a href="https://fasalrin.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">
+              <i class="fas fa-info-circle me-1"></i> More Details
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- National Mission for Sustainable Agriculture -->
+      <div class="card scheme-card" data-category="subsidy education">
+        <div class="card-header scheme-header">
+          <div class="row align-items-center">
+            <div class="col-md-1 text-center">
+              <i class="fas fa-leaf scheme-icon"></i>
+            </div>
+            <div class="col-md-9">
+              <h5 class="mb-0">NMSA (National Mission for Sustainable Agriculture)</h5>
+              <div>
+                <span class="badge scheme-badge me-2">Subsidy</span>
+                <span class="badge scheme-badge me-2">Education</span>
+                <span class="badge bg-success me-2">Active</span>
+                <small><i class="far fa-calendar-alt me-1"></i> Last Updated: October 10, 2024</small>
+              </div>
+            </div>
+            <div class="col-md-2 text-end">
+              <a href="https://nmsa.dac.gov.in/" class="btn apply-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>A scheme that promotes sustainable agriculture through integrated farming, appropriate soil health management, and resources conservation technology. It aims to make agriculture more productive, sustainable, and climate resilient.</p>
+          <div class="row">
+            <div class="col-md-4">
+              <h6><i class="fas fa-check-circle text-success me-2"></i>Benefits:</h6>
+              <ul>
+                <li>Soil health card and management</li>
+                <li>Training on organic farming</li>
+                <li>Climate resilient agricultural practices</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6><i class="fas fa-file-alt text-primary me-2"></i>Documents Required:</h6>
+              <ul>
+                <li>Land Records</li>
+                <li>Identity Proof</li>
+                <li>Bank Account Details</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6><i class="fas fa-info-circle text-warning me-2"></i>Eligibility:</h6>
+              <ul>
+                <li>All farmers</li>
+                <li>Priority for small and marginal farmers</li>
+                <li>Farmers in climate vulnerable areas</li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-end mt-2">
+            <a href="https://nmsa.dac.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">
+              <i class="fas fa-info-circle me-1"></i> More Details
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mahila Kisan Sashaktikaran Pariyojana -->
+      <div class="card scheme-card" data-category="women education">
+        <div class="card-header scheme-header">
+          <div class="row align-items-center">
+            <div class="col-md-1 text-center">
+              <i class="fas fa-female scheme-icon"></i>
+            </div>
+            <div class="col-md-9">
+              <h5 class="mb-0">MKSP (Mahila Kisan Sashaktikaran Pariyojana)</h5>
+              <div>
+                <span class="badge scheme-badge me-2">Women Farmers</span>
+                <span class="badge scheme-badge me-2">Education</span>
+                <span class="badge bg-success me-2">Active</span>
+                <small><i class="far fa-calendar-alt me-1"></i> Last Updated: September 22, 2024</small>
+              </div>
+            </div>
+            <div class="col-md-2 text-end">
+              <a href="http://mksp.gov.in/portal/" class="btn apply-btn">
+                Apply Now
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>A sub-component of the National Rural Livelihood Mission (NRLM), this scheme aims to empower women in agriculture by making systematic investments to enhance their participation and productivity, and also create sustainable livelihoods for them.</p>
+          <div class="row">
+            <div class="col-md-4">
+              <h6><i class="fas fa-check-circle text-success me-2"></i>Benefits:</h6>
+              <ul>
+                <li>Training and capacity building</li>
+                <li>Support for community investment</li>
+                <li>Access to agricultural inputs</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6><i class="fas fa-file-alt text-primary me-2"></i>Documents Required:</h6>
+              <ul>
+                <li>Identity Proof</li>
+                <li>Bank Account Details</li>
+                <li>Self Help Group membership details (if applicable)</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6><i class="fas fa-info-circle text-warning me-2"></i>Eligibility:</h6>
+              <ul>
+                <li>Women farmers</li>
+                <li>Women in agriculture-related activities</li>
+                <li>Priority to women-headed households</li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-end mt-2">
+            <a href="http://mksp.gov.in/portal/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">
+              <i class="fas fa-info-circle me-1"></i> More Details
+            </a>
+          </div>
+        </div>
+      </div>
+
+ <!-- Footer -->
+ <footer class="footer mt-auto">
+  <div class="container-fluid px-5">
+      <div class="row">
+          <div class="col-md-4">
+              <h5><i class="fas fa-leaf me-2"></i>Agrolink</h5>
+              <p>Connecting farmers to resources, markets, and knowledge for sustainable agriculture.</p>
+          </div>
+          <div class="col-md-2">
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Tutorials</a></li>
+                  <li><a href="#">Gov. Schemes</a></li>
+                  <li><a href="#">Contact</a></li>
+              </ul>
+          </div>
+          <div class="col-md-3">
+              <h5>Government Links</h5>
+              <ul class="list-unstyled">
+                  <li><a href="#">Ministry of Agriculture</a></li>
+                  <li><a href="#">PM-KISAN Portal</a></li>
+                  <li><a href="#">Weather Forecast</a></li>
+              </ul>
+          </div>
+          <div class="col-md-3">
+              <h5>Contact Us</h5>
+              <ul class="list-unstyled">
+                  <li><i class="fas fa-map-marker-alt me-2"></i>  Krishi Bhavan, Mumbai - 400056</li>
+                  <li><i class="fas fa-phone me-2"></i> 1800-364-4639 | +91-9262946391 </li>
+                  <li><i class="fas fa-envelope me-2"></i> info@agrolink.in |  support@agrolink.in </li>
+              </ul>
+      </div>
+      <div class="row mt-3">
+          <div class="col-12 text-center">
+              <p>&copy; 2025 Agrolink. All rights reserved.</p>
+          </div>
+      </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  $(document).ready(function(){
+    $(".filter-btn").click(function(){
+      const value = $(this).attr("data-filter");
+      $(".filter-btn").removeClass("active");
+      $(this).addClass("active");
+
+      if (value === "all") {
+        $(".scheme-card").fadeIn();
+      } else {
+        $(".scheme-card").hide();
+        $(`.scheme-card[data-category*='${value}']`).fadeIn();
+      }
+    });
+
+    // Show all cards on page load
+    $(".scheme-card").fadeIn();
+  });
+</script>
+
+</body>
+</html>

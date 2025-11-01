@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | Farm Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: #333;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-signup {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .section-title {
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+    }
+
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Product Page Specific Styles */
+    .product-card {
+      border: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .product-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .badge-farmer {
+      background-color: var(--secondary);
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    .btn-add-cart {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-weight: 500;
+    }
+
+    .btn-add-cart:hover {
+      background-color: var(--dark);
+      color: white;
+    }
+
+    .cart-icon {
+      position: relative;
+      font-size: 24px;
+      color: white;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: #ff6d00;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .filters {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .price-tag {
+      font-weight: bold;
+      color: var(--dark);
+      font-size: 1.2rem;
+    }
+
+    .category-badge {
+      background-color: var(--secondary);
+      color: var(--dark);
+      margin-right: 5px;
+    }
+
+    .product-banner {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1200/400') center/cover;
+      color: white;
+      padding: 60px 0;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Products</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Features
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="product (1).html">Marketplace</a></li>
+              <li><a class="dropdown-item" href="weatherupdate.html">News</a></li>
+              <li><a class="dropdown-item" href="expertadvice.html">Expert Advice</a></li>
+              <li><a class="dropdown-item" href="agrolink-schemes-page.html">Government Schemes</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <div class="position-relative me-3">
+            <a href="#" id="cartButton" class="cart-icon"><i class="fas fa-shopping-cart"></i>
+              <span class="cart-badge" id="cartCount">0</span>
+            </a>
+          </div>
+          <a href="#" class="btn btn-light btn-signup">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Product Banner -->
+  <section class="product-banner">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Farm Fresh Products</h1>
+      <p class="lead">Direct from local farmers to your table</p>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="container py-4">
+    <div class="row">
+      <!-- Filters Sidebar -->
+      <div class="col-lg-3">
+        <div class="filters">
+          <h4>Filters</h4>
+          <hr>
+          
+          <div class="mb-3">
+            <h6>Categories</h6>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="vegetables" checked>
+              <label class="form-check-label" for="vegetables">Vegetables</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="fruits" checked>
+              <label class="form-check-label" for="fruits">Fruits</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="organic">
+              <label class="form-check-label" for="organic">Organic</label>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <h6>Price Range</h6>
+            <input type="range" class="form-range" min="0" max="500" id="priceRange">
+            <div class="d-flex justify-content-between">
+              <span>₹0</span>
+              <span id="priceValue">₹250</span>
+              <span>₹500</span>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <h6>Farm Location</h6>
+            <select class="form-select">
+              <option selected>All Locations</option>
+              <option>Punjab</option>
+              <option>Maharashtra</option>
+              <option>Karnataka</option>
+              <option>Tamil Nadu</option>
+            </select>
+          </div>
+          
+          <button class="btn btn-add-cart w-100">Apply Filters</button>
+        </div>
+      </div>
+      
+      <!-- Products Grid -->
+      <div class="col-lg-9">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>Available Products</h2>
+          <div class="dropdown">
+            <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              Sort By
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+              <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+              <li><a class="dropdown-item" href="#">Recently Added</a></li>
+              <li><a class="dropdown-item" href="#">Popularity</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="row">
+          <!-- Product 1 -->
+          <div class="col-md-4">
+            <div class="card product-card">
+              <img src="tomato.webp" class="card-img-top" alt="Tomatoes">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge category-badge">Vegetable</span>
+                  <span class="badge badge-farmer">Sharma Farms</span>
+                </div>
+                <h5 class="card-title">Fresh Tomatoes</h5>
+                <p class="card-text">Farm-fresh tomatoes picked at peak ripeness. Perfect for salads and cooking.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="price-tag">₹60/kg</span>
+                  <button class="btn btn-add-cart add-to-cart" data-id="1"><i class="fas fa-cart-plus me-1"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 2 -->
+          <div class="col-md-4">
+            <div class="card product-card">
+              <img src="mango.jpg" class="card-img-top" alt="rice">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge category-badge">Mangoes</span>
+                  <span class="badge badge-farmer">Patel Orchards</span>
+                </div>
+                <h5 class="card-title">Alphonso Mangoes</h5>
+                <p class="card-text">Premium Alphonso mangoes from Maharashtra, known for their rich flavor and aroma.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="price-tag">₹300/dozen</span>
+                  <button class="btn btn-add-cart add-to-cart" data-id="2"><i class="fas fa-cart-plus me-1"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 3 -->
+          <div class="col-md-4">
+            <div class="card product-card">
+              <img src="Potatoes.jpg" class="card-img-top" alt="Potatoes">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge category-badge">Vegetable</span>
+                  <span class="badge badge-farmer">Singh Farms</span>
+                </div>
+                <h5 class="card-title">Potatoes</h5>
+                <p class="card-text">High-quality potatoes grown in the rich soil of Punjab. Great for all cooking needs.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="price-tag">₹40/kg</span>
+                  <button class="btn btn-add-cart add-to-cart" data-id="3"><i class="fas fa-cart-plus me-1"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 4 -->
+          <div class="col-md-4">
+            <div class="card product-card">
+              <img src="spinach.jpg" class="card-img-top" alt="Organic Spinach">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge category-badge">Vegetable</span>
+                  <span class="badge badge-farmer">Green Earth Farms</span>
+                </div>
+                <h5 class="card-title">Organic Spinach</h5>
+                <p class="card-text">Pesticide-free organic spinach, rich in nutrients and freshly harvested.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="price-tag">₹80/bunch</span>
+                  <button class="btn btn-add-cart add-to-cart" data-id="4"><i class="fas fa-cart-plus me-1"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 5 -->
+          <div class="col-md-4">
+            <div class="card product-card">
+              <img src="apple.jpg" class="card-img-top" alt="Apples">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge category-badge">Fruit</span>
+                  <span class="badge badge-farmer">Himalayan Orchards</span>
+                </div>
+                <h5 class="card-title">Himachal Apples</h5>
+                <p class="card-text">Sweet and juicy apples from the hills of Himachal Pradesh. A healthy snack option.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="price-tag">₹180/kg</span>
+                  <button class="btn btn-add-cart add-to-cart" data-id="5"><i class="fas fa-cart-plus me-1"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 6 -->
+          <div class="col-md-4">
+            <div class="card product-card">
+              <img src="onion.jpg" class="card-img-top" alt="Organic Onions">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge category-badge">Vegetable</span>
+                  <span class="badge badge-farmer">Kumar Organics</span>
+                </div>
+                <h5 class="card-title">Organic Onions</h5>
+                <p class="card-text">Organically grown red onions from certified farms. Essential for Indian cooking.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="price-tag">₹70/kg</span>
+                  <button class="btn btn-add-cart add-to-cart" data-id="6"><i class="fas fa-cart-plus me-1"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 7 -->
+          <div class="col-md-4">
+            <div class="card product-card">
+              <img src="Bananas.jpg" class="card-img-top" alt="Bananas">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge category-badge">Fruit</span>
+                  <span class="badge badge-farmer">Kerala Farms</span>
+                </div>
+                <h5 class="card-title">Organic Bananas</h5>
+                <p class="card-text">Naturally ripened bananas grown without chemicals. Packed with energy and nutrients.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="price-tag">₹90/dozen</span>
+                  <button class="btn btn-add-cart add-to-cart" data-id="7"><i class="fas fa-cart-plus me-1"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 8 -->
+          <div class="col-md-4">
+            <div class="card product-card">
+              <img src="carrrot.jpeg" class="card-img-top" alt="Carrots">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge category-badge">Vegetable</span>
+                  <span class="badge badge-farmer">Verma Fields</span>
+                </div>
+                <h5 class="card-title">Fresh Carrots</h5>
+                <p class="card-text">Crunchy and sweet carrots, freshly harvested. Rich in vitamins and minerals.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="price-tag">₹50/kg</span>
+                  <button class="btn btn-add-cart add-to-cart" data-id="8"><i class="fas fa-cart-plus me-1"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 9 -->
+          <div class="col-md-4">
+            <div class="card product-card">
+              <img src="strwberry.jpg" class="card-img-top" alt="Strawberries">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge category-badge">Fruit</span>
+                  <span class="badge badge-farmer">Mahabaleshwar Berries</span>
+                </div>
+                <h5 class="card-title">Fresh Strawberries</h5>
+                <p class="card-text">Juicy strawberries from the hills of Maharashtra. Perfect for desserts and snacks.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="price-tag">₹250/box</span>
+                  <button class="btn btn-add-cart add-to-cart" data-id="9"><i class="fas fa-cart-plus me-1"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <nav aria-label="Product navigation" class="mt-4">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shopping Cart Modal -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: var(--primary); color: white;">
+          <h5 class="modal-title">Your Shopping Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="cartItems">
+              <!-- Cart items will be dynamically added here -->
+            </tbody>
+          </table>
+          <div id="emptyCart" class="text-center py-5">
+            <i class="fas fa-shopping-cart fa-3x mb-3" style="color: var(--secondary);"></i>
+            <h5>Your cart is empty</h5>
+            <p>Add some fresh products from our farmers!</p>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <div>
+            <h5>Total: <span id="cartTotal">₹0</span></h5>
+          </div>
+          <div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+            <button type="button" class="btn btn-add-cart" id="checkoutBtn" >Proceed to Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>AgroLink</h5>
+          <p>Connecting farmers, brands, and innovation to empower agriculture in India.</p>
+        </div>
+        <div class="col-md-3">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Contact Us</h5>
+          <p>Email: info@agrolink.com</p>
+          <p>Phone: +91 123-456-7890</p>
+        </div>
+        <div class="col-md-2">
+          <h5>Follow Us</h5>
+          <div class="d-flex">
+            <a href="#" class="me-2"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="#" class="me-2"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="me-2"><i class="fab fa-instagram fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4" style="background-color: var(--secondary);">
+      <div class="text-center">
+        <p>&copy; 2025 AgroLink. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function() {
+      // Cart functionality
+      let cartItems = [];
+      let cartCount = 0;
+      
+      // Product data
+      const products = [
+        { id: 1, name: "Fresh Tomatoes", price: 60, unit: "kg", farmer: "Sharma Farms" },
+        { id: 2, name: "Alphonso Mangoes", price: 300, unit: "dozen", image: "/api/placeholder/100/100", farmer: "Patel Orchards" },
+        { id: 3, name: "Potatoes", price: 40, unit: "kg", image: "/api/placeholder/100/100", farmer: "Singh Farms" },
+        { id: 4, name: "Organic Spinach", price: 80, unit: "bunch", image: "/api/placeholder/100/100", farmer: "Green Earth Farms" },
+        { id: 5, name: "Himachal Apples", price: 180, unit: "kg", image: "/api/placeholder/100/100", farmer: "Himalayan Orchards" },
+        { id: 6, name: "Organic Onions", price: 70, unit: "kg", image: "/api/placeholder/100/100", farmer: "Kumar Organics" },
+        { id: 7, name: "Organic Bananas", price: 90, unit: "dozen", image: "/api/placeholder/100/100", farmer: "Kerala Farms" },
+        { id: 8, name: "Fresh Carrots", price: 50, unit: "kg", image: "/api/placeholder/100/100", farmer: "Verma Fields" },
+        { id: 9, name: "Fresh Strawberries", price: 250, unit: "box", image: "/api/placeholder/100/100", farmer: "Mahabaleshwar Berries" }
+      ];
+      
+      // Add to cart button click
+      $(".add-to-cart").click(function() {
+        const productId = $(this).data("id");
+        const product = products.find(p => p.id === productId);
+        
+        // Check if product is already in cart
+        const existingItem = cartItems.find(item => item.id === productId);
+        
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cartItems.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            unit: product.unit,
+            quantity: 1,
+            image: product.image,
+            farmer: product.farmer
+          });
+        }
+        
+        updateCart();
+        
+        // Show animation
+        $(this).html('<i class="fas fa-check me-1"></i> Added');
+        setTimeout(() => {
+          $(this).html('<i class="fas fa-cart-plus me-1"></i> Add to Cart');
+        }, 1500);
+      });
+      
+      // Open cart modal
+      $("#cartButton").click(function(e) {
+        e.preventDefault();
+        $('#cartModal').modal('show');
+      });
+      
+      // Update cart function
+      function updateCart() {
+        cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        $("#cartCount").text(cartCount);
+        
+        // Update cart modal
+        let cartTotal = 0;
+        const cartItemsContainer = $("#cartItems");
+        cartItemsContainer.empty();
+        
+        if (cartItems.length === 0) {
+          $("#emptyCart").show();
+        } else {
+          $("#emptyCart").hide();
+          
+          cartItems.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            cartTotal += itemTotal;
+            
+            cartItemsContainer.append(`
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <img src="${item.image}" alt="${item.name}" width="50" height="50" class="me-2">
+                    <div>
+                      <h6 class="mb-0">${item.name}</h6>
+                      <small class="text-muted">by ${item.farmer}</small>
+                    </div>
+                  </div>
+                </td>
+                <td>₹${item.price}/${item.unit}</td>
+                <td>
+                  <div class="input-group" style="width: 100px">
+                    <button class="btn btn-sm btn-outline-secondary decrease-qty" data-id="${item.id}">-</button>
+                    <input type="text" class="form-control text-center" value="${item.quantity}" readonly>
+                    <button class="btn btn-sm btn-outline-secondary increase-qty" data-id="${item.id}">+</button>
+                  </div>
+                </td>
+                <td>₹${itemTotal}</td>
+                <td>
+                  <button class="btn btn-sm text-danger remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+            `);
+          });
+        }
+        
+        
+        $("#cartTotal").text(`₹${cartTotal}`);
+        
+        // Add event listeners for quantity buttons
+        $(".increase-qty").click(function() {
+          const id = $(this).data("id");
+          const item = cartItems.find(item => item.id === id);
+          item.quantity += 1;
+          updateCart();
+          localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+        });
+        
+        $(".decrease-qty").click(function() {
+          const id = $(this).data("id");
+          const item = cartItems.find(item => item.id === id);
+          if (item.quantity > 1) {
+            item.quantity -= 1;
+          } else {
+            cartItems = cartItems.filter(item => item.id !== id);
+          }
+          updateCart();
+          localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+        });
+        
+        $(".remove-item").click(function() {
+          const id = $(this).data("id");
+          cartItems = cartItems.filter(item => item.id !== id);
+          updateCart();
+        });
+      }
+      
+      // Price range slider
+      $("#priceRange").on("input", function() {
+        $("#priceValue").text(`₹${$(this).val()}`);
+      });
+      
+      // Checkout button
+      document.getElementById("checkoutBtn").addEventListener("click", function () {
+    window.location.href = "checkoutpage.html"; // Replace with your actual checkout page URL
+  });
+
+
+    });
+    </script>
+</body>
+</html>

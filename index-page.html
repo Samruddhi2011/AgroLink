@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroLink | Empowering Farmers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">  
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f1f8e9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: #fff !important;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #a5d6a7 !important;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg.jpg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #8bc34a;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #689f38;
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: #f1f8e9;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #2e7d32;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .success-stories-section {
+  background-color: #f1f8e9;
+}
+
+.story-card {
+  background-color: #e8f5e9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-4px);
+}
+
+.story-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+        .story-content {
+            width: 60%;
+            padding: 30px;
+        }
+        
+        .story-content h3 {
+            margin-bottom: 10px;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .user-type {
+            display: flex;
+            justify-content: space-between;
+            padding: 60px 0;
+            background-color: #e8f5e9;
+        }
+        
+        .user-card {
+            flex: 1;
+            text-align: center;
+            padding: 30px;
+            margin: 0 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .user-card h3 {
+            margin: 20px 0;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #2e7d32;
+            color: white;
+        }
+        
+        .cta h2 {
+            margin-bottom: 20px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .cta p {
+            margin-bottom: 30px;
+            font-size: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        footer {
+            background-color: #1b5e20;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #a5d6a7;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #a5d6a7;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+<div class="container">
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-leaf me-2"></i>AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="product (1).html">Marketplace</a></li>
+          <li class="nav-item"><a class="nav-link" href="weatherupdate.html">Weather</a></li>
+          <li class="nav-item"><a class="nav-link" href="expertadvice.html">Advice</a></li>
+          <li class="nav-item"><a class="nav-link" href="agrolink-contact-page.html">Contact</a></li>
+        </ul>
+        <button onclick="window.location.href='farmprofilepage.html'" class="btn btn-light btn-signup">Profile</button>
+      </div>
+    </div>
+  </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+  <section class="hero d-flex justify-content-center align-items-center text-center">
+    <div class="container">
+      <h1>Empowering Farmers Across India</h1>
+      <p class="mt-3">Connect directly with buyers, access real-time weather updates, and get expert agricultural advice.</p>
+      <a href="homepage1.html" class="btn btn-custom mt-3">Get Started</a>
+    </div>
+  </section>
+
+<!-- Features -->
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">How AgriLink Helps You</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌾</div>
+                <h3>Direct Market Access</h3>
+                <p>Sell your crops directly to buyers without middlemen, increasing your profits by up to 25%.</p>
+                <a href="product (1).html" class="btn btn-custom mt-3">Get Started</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌤️</div>
+                <h3>Real-time Weather Updates</h3>
+                <p>Receive location-specific weather alerts and forecasts to protect your crops and plan activities.</p>
+                <a href="weatherupdate.html" class="btn btn-custom mt-3">Get Started</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍🌾</div>
+                <h3>Expert Agricultural Advice</h3>
+                <p>Connect with agricultural experts who can provide guidance on crop selection, pest control, and more.</p>
+                <a href="expertadvice.html" class="btn btn-custom mt-3">Get Started</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Government Schemes</h3>
+                <p>Stay informed about the latest subsidies, loans, and agricultural policies that can benefit you.</p>
+                <a href="agrolink-schemes-page.html" class="btn btn-custom mt-3">Get Started</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>Farming Tutorials</h3>
+                <p>Access comprehensive guides on sustainable and modern farming techniques to improve yield.</p>
+                <a href="agrolink-farming-tutorials.html" class="btn btn-custom mt-3">Get Started</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Community Forum</h3>
+                <p>Join discussions with fellow farmers, share experiences, and solve problems together.</p>
+                <a href="communityforum.html" class="btn btn-custom mt-3">Get Started</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="success-stories-section py-5">
+    <div class="container-fluid px-5">
+      <div class="row justify-content-center gx-4 gy-4">
+  
+        <!-- Story 1 -->
+        <div class="col-md-6 col-lg-5">
+          <div class="story-card p-4 d-flex flex-column h-100">
+            <div class="d-flex align-items-start mb-3">
+              <img src="farm3.jpg" class="story-image me-3" alt="Rajesh">
+              <h4 class="fw-bold text-success">Rajesh Kumar, Rice Farmer</h4>
+            </div>
+            <p class="text-dark mb-0">
+              "Before AgroLink I was selling my rice at 20% below market rates to middlemen. Now I connect directly with buyers and have increased my income significantly. The weather alerts also helped me save my crops during last season's unexpected rains."
+            </p>
+          </div>
+        </div>
+  
+        <!-- Story 2 -->
+        <div class="col-md-6 col-lg-5">
+          <div class="story-card p-4 d-flex flex-column h-100">
+            <div class="d-flex align-items-start mb-3">
+              <img src="farm4.jpg" class="story-image me-3" alt="Sunita">
+              <h4 class="fw-bold text-success">Sunita Patel, Vegetable Grower</h4>
+            </div>
+            <p class="text-dark mb-0">
+              "The expert advice on organic farming techniques has helped me reduce pests without chemicals. My vegetables now fetch premium prices in the marketplace. The community forum has connected me with other women farmers who face similar challenges."
+            </p>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+    <section class="user-type">
+        <div class="container">
+            <div class="user-card">
+                <h3>For Farmers</h3>
+                <p>List your crops, get fair prices, access weather forecasts, and receive expert guidance to maximize your yield and profits.</p>
+                <a href="signup.html" class="btn">Join as Farmer</a>
+            </div>
+            <div class="user-card">
+                <h3>For Buyers</h3>
+                <p>Source fresh produce directly from farmers, ensure quality, and support local agriculture while getting competitive prices.</p>
+                <a href="signup.html" class="btn">Join as Buyer</a>
+            </div>
+            <div class="user-card">
+                <h3>For Experts</h3>
+                <p>Share your agricultural knowledge, help farmers solve problems, and contribute to sustainable farming practices.</p>
+                <a href="signup.html" class="btn">Join as Expert</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Join AgroLink Today</h2>
+            <p>Be part of the agricultural revolution that's empowering farmers across the country. Sign up now and take the first step toward better farming and better profits.</p>
+            <a href="login.html" class="btn">Create Your Account</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="weatherupdate.html">Weather Updates</a></li>
+                        <li><a href="expertadvice.html">Expert Advice</a></li>
+                        <li><a href="agrolink-schemes-page.html">Government Schemes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="agrolink-farming-tutorials.html">Farming Tutorials</a></li>
+                        <li><a href="communityforum.html">Community Forum</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="agrolink-about-us.html">Our Mission</a></li>
+                        <li><a href="agrolink-about-us.html">Team</a></li>
+                        <li><a href="agrolink-about-us.html">Partners</a></li>
+                        <li><a href="updated-index-page.html">Success Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="agrolink-contact-page.html">Contact Form</a></li>
+                        <li><a href="agrolink-contact-page.html">Support</a></li>
+                        <li><a href="agrolink-contact-page.html">Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AgroLink. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

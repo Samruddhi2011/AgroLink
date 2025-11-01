@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgroLink - Sign In</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #4a7c59;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+
+    .tagline {
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    .signin-form {
+      background-color: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #4a7c59;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #4a7c59;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #4a7c59;
+      box-shadow: 0 0 5px rgba(74, 124, 89, 0.3);
+    }
+
+    .btn-submit {
+      background-color: #4a7c59;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-submit:hover {
+      background-color: #3a6248;
+    }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .forgot-password {
+      text-align: right;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .social-signin {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .social-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #e0e0e0;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .or-divider {
+      text-align: center;
+      margin: 20px 0;
+      font-weight: bold;
+      color: #888;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #999;
+    }
+
+    .footer-links a {
+      margin: 0 10px;
+      color: #666;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <script>
+    function validateSignIn() {
+      var username = document.getElementById("username");
+      var password = document.getElementById("password");
+
+      if (username.value.trim() === "") {
+        alert("Please enter your username or email");
+        username.focus();
+        return false;
+      }
+
+      if (password.value.trim() === "") {
+        alert("Please enter your password");
+        password.focus();
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">AgroLink</div>
+      <div class="tagline">Connecting Farmers, Growing Communities</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="signin-form">
+      <h2>Sign In to AgroLink</h2>
+
+      <form onsubmit="return validateSignIn()" action="signin.php" method="POST">
+        <div class="form-group">
+          <label for="username">Username or Email</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username or email" />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" />
+          <div class="forgot-password">
+            <a href="reset-password.html">Forgot Password?</a>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="checkbox" id="remember-me" style="width: auto; margin-right: 10px;" />
+          <label for="remember-me" style="display: inline;">Remember me</label>
+        </div>
+
+        <button type="submit" class="btn-submit">Sign In</button>
+
+        <div class="or-divider">or</div>
+
+        <div class="social-signin">
+          <button type="button" class="social-btn">
+            <img src="/api/placeholder/20/20" alt="Google" style="margin-right: 8px;" /> Google
+          </button>
+          <button type="button" class="social-btn">
+            <img src="/api/placeholder/20/20" alt="Facebook" style="margin-right: 8px;" /> Facebook
+          </button>
+        </div>
+
+        <div class="form-footer">
+          <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 AgroLink - All Rights Reserved</p>
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Help Center</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

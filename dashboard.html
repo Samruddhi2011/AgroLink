@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | Farmer Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+      --warning: #ff9800;
+      --danger: #f44336;
+      --success: #4caf50;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: #333;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-account {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .dashboard-header {
+      background-color: var(--primary);
+      color: white;
+      padding: 2rem 0;
+    }
+
+    .dashboard-card {
+      height: 100%;
+      transition: transform 0.3s;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .dashboard-card .card-header {
+      background-color: var(--primary);
+      color: white;
+      border-radius: 10px 10px 0 0;
+      font-weight: bold;
+    }
+
+    .crop-trend-up {
+      color: var(--success);
+    }
+
+    .crop-trend-down {
+      color: var(--danger);
+    }
+
+    .crop-trend-stable {
+      color: var(--warning);
+    }
+
+    .weather-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .weather-temp {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .alert-info {
+      background-color: var(--secondary);
+      border-color: var(--primary);
+      color: var(--dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="farmprofilepage.html">Dashboard</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Services
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="product (1).html">Marketplace</a></li>
+              <li><a class="dropdown-item" href="expertadvice.html">Expert Advice</a></li>
+              <li><a class="dropdown-item" href="agrolink-schemes-page.html">Government Schemes</a></li>
+             
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="weatherupdate.html">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+        </ul>
+        <div class="dropdown">
+          <button class="btn btn-light btn-account dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+            Farmer Account
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="farmprofilepage.html">Profile</a></li>
+            <li><a class="dropdown-item" href="farmprofilepage.html">My Crops</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="homepage.html">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Header -->
+  <header class="dashboard-header">
+    <div class="container">
+      <h1>Farmer Dashboard</h1>
+      <p class="lead">Welcome back, Rajesh! Here's your farming insights for Sunday, April 6, 2025</p>
+    </div>
+  </header>
+
+  <!-- Main Dashboard Content -->
+  <section class="py-5">
+    <div class="container">
+      <!-- Alerts Row -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="alert alert-info" role="alert">
+            <strong>Market Alert:</strong> Rice prices expected to rise 8% next month due to increased export demand. Consider delaying sales if possible.
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Widgets -->
+      <div class="row mb-4">
+        <!-- Crop Market Demand Widget -->
+        <div class="col-md-6 mb-4">
+          <div class="card dashboard-card">
+            <div class="card-header">Crop Market Demand</div>
+            <div class="card-body">
+              <canvas id="demandChart" height="250"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price Trends Widget -->
+        <div class="col-md-6 mb-4">
+          <div class="card dashboard-card">
+            <div class="card-header">Current Market Prices</div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Crop</th>
+                    <th>Price/Quintal</th>
+                    <th>Trend</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Rice</td>
+                    <td>₹2,450</td>
+                    <td><span class="crop-trend-up">↑ 5.2%</span></td>
+                  </tr>
+                  <tr>
+                    <td>Wheat</td>
+                    <td>₹2,120</td>
+                    <td><span class="crop-trend-up">↑ 2.8%</span></td>
+                  </tr>
+                  <tr>
+                    <td>Cotton</td>
+                    <td>₹6,780</td>
+                    <td><span class="crop-trend-down">↓ 1.5%</span></td>
+                  </tr>
+                  <tr>
+                    <td>Soybean</td>
+                    <td>₹4,290</td>
+                    <td><span class="crop-trend-stable">→ 0.3%</span></td>
+                  </tr>
+                  <tr>
+                    <td>Sugarcane</td>
+                    <td>₹285</td>
+                    <td><span class="crop-trend-up">↑ 3.7%</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a href="#" class="btn btn-sm" style="background-color: var(--primary); color: white;">View All Prices</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <!-- Weather Forecast Widget -->
+        <div class="col-md-8 mb-4">
+          <div class="card dashboard-card">
+            <div class="card-header">5-Day Weather Forecast</div>
+            <div class="card-body">
+              <div class="row text-center">
+                <div class="col">
+                  <p class="mb-1">Today</p>
+                  <div class="weather-icon">☀️</div>
+                  <p class="weather-temp">32°C</p>
+                  <p>Sunny</p>
+                </div>
+                <div class="col">
+                  <p class="mb-1">Mon</p>
+                  <div class="weather-icon">⛅</div>
+                  <p class="weather-temp">30°C</p>
+                  <p>Partly Cloudy</p>
+                </div>
+                <div class="col">
+                  <p class="mb-1">Tue</p>
+                  <div class="weather-icon">🌧️</div>
+                  <p class="weather-temp">28°C</p>
+                  <p>Rain</p>
+                </div>
+                <div class="col">
+                  <p class="mb-1">Wed</p>
+                  <div class="weather-icon">🌧️</div>
+                  <p class="weather-temp">27°C</p>
+                  <p>Rain</p>
+                </div>
+                <div class="col">
+                  <p class="mb-1">Thu</p>
+                  <div class="weather-icon">☀️</div>
+                  <p class="weather-temp">29°C</p>
+                  <p>Sunny</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <p><strong>Rainfall Prediction:</strong> 45mm expected on Tuesday-Wednesday</p>
+                  <p><strong>Soil Moisture:</strong> Currently at optimal levels</p>
+                </div>
+                <div class="col-md-6">
+                  <p><strong>Wind Speed:</strong> 8-12 km/h from SW</p>
+                  <p><strong>Humidity:</strong> 65-75% next 48 hours</p>
+                </div>
+              </div>
+              <div class="alert alert-warning mt-3 mb-0">
+                <strong>Weather Advisory:</strong> Consider harvesting before Tuesday's expected rainfall
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions Widget -->
+        <div class="col-md-4 mb-4">
+          <div class="card dashboard-card mb-4">
+            <div class="card-header">Quick Actions</div>
+            <div class="card-body">
+              <div class="d-grid gap-2">
+                <button class="btn btn-success mb-2">Sell Crops Now</button>
+                <button class="btn btn-outline-success mb-2">Request Expert Advice</button>
+                <button class="btn btn-outline-success">Apply for Govt Scheme</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card dashboard-card">
+            <div class="card-header">Your Crop Calendar</div>
+            <div class="card-body">
+              <p><strong>Rice:</strong> Harvesting in 2 weeks</p>
+              <p><strong>Soybean:</strong> Planting scheduled next month</p>
+              <button class="btn btn-sm" style="background-color: var(--primary); color: white;">View Full Calendar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Latest News Row -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card dashboard-card">
+            <div class="card-header">Latest Agricultural News</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <h5>New Government Subsidy for Organic Farming</h5>
+                  <p>The Ministry of Agriculture announces additional subsidies for certified organic farmers starting May 2025.</p>
+                </div>
+                <div class="col-md-4">
+                  <h5>Innovative Pest Control Technology</h5>
+                  <p>Local startup develops eco-friendly pest control solution proven to increase crop yields by 15%.</p>
+                </div>
+                <div class="col-md-4">
+                  <h5>Export Opportunities for Rice Farmers</h5>
+                  <p>New trade agreement opens markets in Southeast Asia with reduced tariffs.</p>
+                </div>
+              </div>
+              <a href="#" class="btn btn-sm" style="background-color: var(--primary); color: white;">Read More News</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 AgroLink. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      // Smooth scrolling
+      $(".navbar-nav a").on('click', function (e) {
+        if (this.hash !== "") {
+          e.preventDefault();
+          const hash = this.hash;
+          $('html, body').animate({ scrollTop: $(hash).offset().top - 70 }, 800);
+        }
+      });
+      
+      // Initialize crop demand chart
+      const demandCtx = document.getElementById('demandChart').getContext('2d');
+      const demandChart = new Chart(demandCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Rice', 'Wheat', 'Cotton', 'Soybean', 'Sugarcane'],
+          datasets: [{
+            label: 'Current Demand (tons)',
+            data: [85000, 62000, 45000, 38000, 72000],
+            backgroundColor: '#2e7d32',
+            borderColor: '#1b5e20',
+            borderWidth: 1
+          },
+          {
+            label: 'Last Month Demand (tons)',
+            data: [81000, 60000, 46000, 35000, 69000],
+            backgroundColor: '#a5d6a7',
+            borderColor: '#81c784',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Crop Demand Comparison'
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | Empowering Agriculture</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: lightgreen;
+  color: #333;
+}
+
+.navbar {
+  background-color: green;
+}
+
+.navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+  color: white !important;
+}
+
+.dropdown-menu {
+  background-color: palegreen;
+}
+
+.dropdown-item:hover {
+  background-color: green;
+  color: white;
+}
+
+.btn-signup {
+  background-color: white;
+  color: green;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 5px 15px;
+  margin-left: 15px;
+}
+
+.hero {
+  background: url('bg.jpg.jpg') no-repeat center center/cover;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero h1, .hero p {
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.brands img {
+  height: 80px;
+  object-fit: contain;
+  margin: 15px;
+}
+
+.news-card {
+  border: none;
+  transition: transform 0.3s;
+}
+
+.news-card:hover {
+  transform: scale(1.05);
+}
+
+.footer {
+  background-color: darkgreen;
+  color: white;
+  padding: 2rem 0;
+}
+
+.footer a {
+  color: lightgreen;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Features
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="farmprofilepage.html">Farmer Dashboard</a></li>
+              <li><a class="dropdown-item" href="product (1).html">Crop Marketplace</a></li>
+              <li><a class="dropdown-item" href="buyerdash.html"> Buyer Dashboard</a></li>
+              <li><a class="dropdown-item" href="weatherupdate.html">Weather Updates</a></li>
+              <li><a class="dropdown-item" href="expertadvice.html">Expert Advice</a></li>
+              <li><a class="dropdown-item" href="agrolink-schemes-page.html">Government Schemes</a></li>
+              <li><a class="dropdown-item" href="agrolink-farming-tutorials.html">Farming Tutorials</a></li>
+              <li><a class="dropdown-item" href="communityforum.html">Community Forum</a></li>
+              <li><a class="dropdown-item" href="adminpanel.html">Admin Panel</a></li>
+              <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+              <li><a class="dropdown-item" href="agrolink-about-us.html">About Us</a></li>
+              <li><a class="dropdown-item" href="agrolink-contact-page.html">Contact Us</a></li>
+              
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Empowering Agriculture</h1>
+      <p class="lead">Connecting farmers, brands, and innovation</p>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section id="why-us" class="py-5 bg-white">
+    <h2 class="section-title">Why Choose AgroLink?</h2>
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4 mb-4">
+          <img src="innov.jp.jpg" class="mb-3" width="60" alt="Innovation Icon">
+          <h5>Cutting-edge Innovation</h5>
+          <p>We bring the latest in agri-tech to the fields, helping farmers improve yield and reduce cost.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <img src="https://cdn-icons-png.flaticon.com/512/2910/2910761.png" class="mb-3" width="60" alt="Support Icon">
+          <h5>24/7 Support</h5>
+          <p>Our dedicated team is always available to support farmers with practical solutions and timely advice.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <img src="communi.jpg" class="mb-3" width="60" alt="Community Icon">
+          <h5>Strong Community</h5>
+          <p>We empower local communities by connecting them with knowledge, markets, and growth opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section id="news" class="py-5 bg-light">
+    <h2 class="section-title">Latest News</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card news-card">
+            <img src="irr.jpg" class="card-img-top" alt="Smart Irrigation" height="450px">
+            <div class="card-body">
+              <h5 class="card-title">AgroTech Launches Smart Irrigation</h5>
+              <p class="card-text">A breakthrough in water conservation is here. Learn how smart tech helps farmers thrive.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card news-card">
+            <img src="corn-harvet-bruce-morrison.jpg" class="card-img-top" alt="Harvest 2025" height="450px">
+            <div class="card-body">
+              <h5 class="card-title">Harvest 2025: Better Yields Predicted</h5>
+              <p class="card-text">With improved forecasting and seed tech, expectations for this season are high.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card news-card">
+            <img src="w.jpg" class="card-img-top" alt="Women in Agriculture" height="450px">
+            <div class="card-body">
+              <h5 class="card-title">Women in Agriculture Spotlight</h5>
+              <p class="card-text">Highlighting the success stories of women who are transforming farming worldwide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our People Section -->
+  <section id="people" class="py-5">
+    <h2 class="section-title">Our People</h2>
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4 mb-4">
+          <img src="" class="rounded-circle mb-3">
+          <h5>Eshan Lamba </h5>
+          <p>CEO</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <img src="" class="rounded-circle mb-3">
+          <h5>Anushka  Saxena</h5>
+          <p>Head of Innovation</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <img src="" class="rounded-circle mb-3">
+          <h5>Samruddhi Patodi</h5>
+          <p>Operations Lead</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 AgroLink. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      $(".navbar-nav a").on('click', function (e) {
+        const href = $(this).attr("href");
+        // Only intercept if it's an in-page anchor (starts with #)
+        if (href && href.startsWith("#")) {
+          e.preventDefault();
+          const hash = this.hash;
+          $('html, body').animate({ scrollTop: $(hash).offset().top - 70 }, 800);
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>

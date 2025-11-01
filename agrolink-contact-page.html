@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - AgroLink</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f8e9;
+      color: #333;
+    }
+    .navbar {
+      background-color: #2e7d32;
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+    }
+    .dropdown-menu {
+      background-color: #a5d6a7;
+    }
+    .dropdown-item:hover {
+      background-color: #2e7d32;
+      color: white;
+    }
+    .contact-header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .contact-card {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .contact-info-card {
+      background-color: #a5d6a7;
+      padding: 20px;
+      border-radius: 10px;
+      height: 100%;
+    }
+    .contact-icon {
+      font-size: 1.8rem;
+      color: #2e7d32;
+      margin-bottom: 15px;
+    }
+    .contact-card h3 {
+      color: #2e7d32;
+      font-weight: bold;
+    }
+    .form-label {
+      color: #2e7d32;
+      font-weight: 600;
+    }
+    .form-control, .form-select {
+      border: 2px solid #a5d6a7;
+      border-radius: 6px;
+      box-shadow: none;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #2e7d32;
+      box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.25);
+    }
+    .btn-submit {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 10px 30px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .btn-submit:hover {
+      background-color: #1b5e20;
+    }
+    .map-container {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      height: 300px;
+    }
+    .footer {
+      background-color: #1b5e20;
+      color: white;
+      padding: 2rem 0;
+    }
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .social-icon {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      color: white;
+    }
+    .social-icon:hover {
+      color: #a5d6a7;
+    }
+    #formSubmitSuccess {
+      display: none;
+      margin-top: 15px;
+      color: #388e3c;
+      font-weight: 500;
+    }
+    .g-recaptcha {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+    }
+    .form-loading {
+      display: none;
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="marketplace.html">Market Connect</a></li>
+              <li><a class="dropdown-item" href="weatherupdate.html">Weather Alerts</a></li>
+              <li><a class="dropdown-item" href="expertadvice.html">Expert Advice</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
+        </ul>
+        <span class="text-white ms-3"><i class="fas fa-globe me-1"></i>English</span>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Header -->
+  <header class="contact-header">
+    <div class="container">
+      <h1><i class="fas fa-headset me-2"></i>Contact Us</h1>
+      <p>We’re here to help with all your farming needs</p>
+    </div>
+  </header>
+
+<!-- Main Content -->
+<div class="container py-5">
+  <div class="row g-4">
+
+    <!-- Contact Form -->
+    <div class="col-lg-7">
+      <div class="contact-card p-4">
+        <h3 class="mb-4 text-center">Send Us a Message</h3>
+
+        <form id="contactForm">
+          <!-- Full Name -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+          </div>
+
+          <!-- Email and Phone -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <select class="form-select" id="subject" required>
+              <option value="" disabled selected>Select a subject</option>
+              <option value="support">Technical Support</option>
+              <option value="scheme">Government Scheme Inquiry</option>
+              <option value="market">Market Connection</option>
+              <option value="weather">Weather Alerts</option>
+              <option value="advice">Agricultural Advice</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div class="mb-3">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea class="form-control" id="message" rows="5" placeholder="Please describe how we can help you" required></textarea>
+          </div>
+
+          <!-- Google reCAPTCHA -->
+          <div class="g-recaptcha" data-sitekey="6LdTbRQrAAAAAFL2NN0Xiq0BcTKrCuGvy5g0cs0T"></div>
+
+          <!-- Submit -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-submit">
+              <i class="fas fa-paper-plane me-2"></i>Send Message
+            </button>
+          </div>
+
+          <!-- Loading Indicator -->
+          <div class="form-loading" id="formLoading">
+            <div class="spinner-border text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Sending your message...</p>
+          </div>
+
+          <!-- Success Message -->
+          <div id="formSubmitSuccess" class="text-success mt-3 text-center" style="display: none;">
+            <i class="fas fa-check-circle me-2"></i>Your message has been sent successfully! We'll get back to you soon.
+          </div>
+        </form>
+      </div>
+    </div>
+            
+<!-- Contact Information -->
+<div class="col-lg-5">
+  <div class="contact-info-card">
+    <h3 class="mb-4">Contact Information</h3>
+    
+    <div class="d-flex mb-4">
+      <div class="me-3">
+        <div class="contact-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+      </div>
+      <div>
+        <h5>Our Location</h5>
+        <p>AgroLink Headquarters,<br>Krishi Bhavan, Mumbai - 400056</p>
+      </div>
+    </div>
+    
+    <div class="d-flex mb-4">
+      <div class="me-3">
+        <div class="contact-icon">
+          <i class="fas fa-phone-alt"></i>
+        </div>
+      </div>
+      <div>
+        <h5>Phone Numbers</h5>
+        <p>Toll-Free: 1800-364-4639<br>Support: +91-9262946391</p>
+      </div>
+    </div>
+                    
+    <div class="d-flex mb-4">
+      <div class="me-3">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </div>
+      <div>
+        <h5>Email Address</h5>
+        <p>support@agrolink.in<br>info@agrolink.in</p>
+      </div>
+    </div>
+                    
+    <div class="d-flex">
+      <div class="me-3">
+        <div class="contact-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+      </div>
+      <div>
+        <h5>Working Hours</h5>
+        <p>Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: Closed</p>
+      </div>
+    </div>
+                    
+    <div class="mt-4">
+      <h5>Connect With Us</h5>
+      <div class="d-flex mt-2">
+        <a href="#" class="btn btn-light me-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="btn btn-light me-2"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="btn btn-light me-2"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="btn btn-light me-2"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="btn btn-light"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+            
+<!-- Map -->
+<div class="col-12 mt-4">
+  <div class="map-container-fluid">
+    <p><img src="location.png" width="50" height="45" alt="Location"> Our Office Location</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d120639.82279110698!2d72.75472018107821!3d19.107898871887286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3be7c9b888ae67fd%3A0xe0b9538d623ac5d2!2sBhakti%20Vedant%20Marg%2C%20opp.%20Cooper%20Hospital%2C%20Navpada%2C%20Suvarna%20Nagar%2C%20Vile%20Parle%20West%2C%20Mumbai%2C%20Maharashtra%20400056!3m2!1d19.1079172!2d72.8371219!5e0!3m2!1sen!2sin!4v1744048313400!5m2!1sen!2sin" 
+      width="100%" 
+      height="400%" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      eferrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+
+      <!-- About -->
+      <div class="col-md-4">
+        <h5><i class="fas fa-leaf me-2"></i>Agrolink</h5>
+        <p>Connecting farmers to resources, markets, and knowledge for sustainable agriculture.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-2">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="agrolink-farming-tutorials.html">Tutorials</a></li>
+          <li><a href="agrolink-schemes-page.html">Gov. Schemes</a></li>
+          <li><a href="agrolink-contact-page.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Government Links -->
+      <div class="col-md-3">
+        <h5>Government Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="agrolink-schemes-page.html">Ministry of Agriculture</a></li>
+          <li><a href="agrolink-schemes-page.html">PM-KISAN Portal</a></li>
+          <li><a href="agrolink-schemes-page.html">Weather Forecast</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-3">
+        <h5>Contact Us</h5>
+        <ul class="list-unstyled">
+          <li><i class="fas fa-map-marker-alt me-2"></i>Krishi Bhavan, Mumbai - 400056</li>
+          <li><i class="fas fa-phone me-2"></i>1800-364-4639 | +91-9262946391</li>
+          <li><i class="fas fa-envelope me-2"></i>info@agrolink.in | support@agrolink.in</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="row mt-3">
+      <div class="col-12 text-center">
+        <p>&copy; 2025 Agrolink. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    emailjs.init("85-P77kwk9o7ZnTJl"); // Your EmailJS public key
+
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Grab form elements
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const phone = document.getElementById("phone");
+      const subject = document.getElementById("subject");
+      const message = document.getElementById("message");
+      const loadingIndicator = document.getElementById("formLoading");
+      const successMsg = document.getElementById("formSubmitSuccess");
+
+      // Validate name (not empty and no numbers/special characters)
+      if (name.value == "") {
+        alert("Please enter your full name.");
+        name.focus();
+        return false;
+      }
+      
+      if (!/^[a-zA-Z\s]+$/.test(name.value)) {
+        alert("Name should not contain numbers or special characters.");
+        name.focus();
+        return false;
+      }
+      
+      // Validate email
+      if (email.value == "") {
+        alert("Please enter your email address.");
+        email.focus();
+        return false;
+      }
+      var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email.value)) {
+        alert("Please enter a valid email address.");
+        email.focus();
+        return false;
+      }
+      
+      // Validate phone number
+      var phonePattern = /^[0-9]{10}$/;
+      if (!phonePattern.test(phone.value)) {
+        alert("Please enter a valid 10-digit phone number.");
+        phone.focus();
+        return false;
+      }
+      
+      // Validate subject
+      if (subject.value == "") {
+        alert("Please select a subject.");
+        subject.focus();
+        return false;
+      }
+      
+      // Validate message
+      if (message.value == "") {
+        alert("Please enter your message.");
+        message.focus();
+        return false;
+      }
+
+      // reCAPTCHA validation
+      var recaptchaResponse = grecaptcha.getResponse();
+      if (recaptchaResponse == "") {
+        alert("Please complete the reCAPTCHA verification.");
+        return false;
+      }
+      
+      // Show loading spinner
+      loadingIndicator.style.display = "block";
+      
+      // Prepare parameters
+      var templateParams = {
+        user_name: name.value,
+        user_email: email.value,
+        user_phone: phone.value,
+        subject: subject.options[subject.selectedIndex].text,
+        message: message.value
+      };
+      
+      // Send email using EmailJS
+      emailjs.send("service_w83fq3p", "template_u2qubyr", templateParams)
+      .then(function(response) {
+        loadingIndicator.style.display = "none";
+        successMsg.style.display = "block";
+        document.getElementById("contactForm").reset();
+        grecaptcha.reset(); // reset the captcha after success
+        })
+        .catch(function(error) {
+          loadingIndicator.style.display = "none";
+          alert("Oops! Something went wrong. Please try again.");
+          console.log(error);
+        });
+      });
+  })();
+</script>
+</body>
+</html>

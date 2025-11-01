@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agrolink: Farmer Support Platform</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+      --warning: #ff9800;
+      --danger: #f44336;
+      --success: #4caf50;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-account {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .main-content {
+      flex: 1;
+    }
+
+    .login-container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .login-image {
+      background-image: url('/api/placeholder/800/600');
+      background-size: cover;
+      background-position: center;
+      min-height: 400px;
+    }
+
+    .login-form {
+      padding: 2rem;
+    }
+
+    .login-form h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.25);
+    }
+
+    .btn-login {
+      background-color: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .btn-login:hover {
+      background-color: var(--dark);
+      color: white;
+    }
+
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+      margin-top: auto;
+    }
+
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .banner {
+      background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(46, 125, 50, 0.8)), url('/api/placeholder/1600/400');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .form-check-input:checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .login-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .social-login {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 5px;
+      color: white;
+    }
+
+    .facebook {
+      background-color: #3b5998;
+    }
+
+    .google {
+      background-color: #db4a39;
+    }
+
+    .twitter {
+      background-color: #00acee;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-leaf me-2"></i>Agriconnect
+      </a>
+      <div class="navbar-text text-white d-none d-md-block">Your gateway to smart farming</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="homepage.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="agrolink-about-us.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="weatherupdate.html">Weather Updates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="agrolink-schemes-page.html">Government Schemes</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="container">
+      <h1>Welcome to Agrolink</h1>
+      <p class="lead">Connecting farmers to resources, markets, and expert advice</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="login-container">
+            <div class="row g-0">
+              <div class="col-md-6 d-none d-md-block login-image"></div>
+              <div class="col-md-6 login-form">
+                <h2>Sign In</h2>
+                <div class="alert alert-info" role="alert">
+                  <i class="fas fa-info-circle me-2"></i>
+                  Sign in to access market prices, weather forecasts, and agricultural advice.
+                </div>
+                <form id="loginForm" ng-app="loginApp" ng-controller="LoginController">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                      <input type="email" class="form-control" id="email" name="email" required ng-model="user.email">
+                    </div>
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                      <input type="password" class="form-control" id="password" name="password" required ng-model="user.password">
+                      <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="login-options">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="rememberMe" ng-model="user.rememberMe">
+                      <label class="form-check-label" for="rememberMe">
+                        Remember me
+                      </label>
+                    </div>
+                    <a href="#" class="text-primary">Forgot password?</a>
+                  </div>
+                  <button type="submit" class="btn btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                  </button>
+                  <div class="text-center mt-3">
+                    Don't have an account? <a href="#" class="text-primary">Register now</a>
+                  </div>
+                  <div class="social-login">
+                    <p>Or login with</p>
+                    <a href="#" class="social-btn google"><i class="fab fa-google"></i></a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5>Agriconnect</h5>
+          <p>Your gateway to smart farming</p>
+          <p>Empowering farmers with technology and market access</p>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Weather Updates</a></li>
+            <li><a href="#">Government Schemes</a></li>
+          </ul>
+        </div>
+        <footer class="footer">
+          <div class="container text-center">
+            <p>&copy; 2025 AgroLink. All rights reserved.</p>
+            <p>
+              <a href="#">Privacy Policy</a> | 
+              <a href="#">Terms of Service</a> | 
+              <a href="#">Contact</a>
+            </p>
+          </div>
+        </footer>
+
+  <!-- Scripts -->
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <!-- Angular JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+  
+  <script>
+    // Angular App
+    var app = angular.module('loginApp', []);
+    
+    app.controller('LoginController', function($scope) {
+      $scope.user = {
+        email: '',
+        password: '',
+        rememberMe: false
+      };
+      
+      $scope.login = function() {
+        // Login logic would go here
+        console.log('Login attempt with:', $scope.user.email);
+      };
+    });
+    
+    // jQuery functionality
+    $(document).ready(function() {
+      // Toggle password visibility
+      $('#togglePassword').click(function() {
+        const passwordField = $('#password');
+        const passwordFieldType = passwordField.attr('type');
+        const icon = $(this).find('i');
+        
+        if (passwordFieldType === 'password') {
+          passwordField.attr('type', 'text');
+          icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+          passwordField.attr('type', 'password');
+          icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+      });
+      
+      // Form validation
+      $('#loginForm').submit(function(e) {
+        e.preventDefault();
+        
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var isValid = true;
+        
+        // Simple validation
+        if (!email || !validateEmail(email)) {
+          $('#email').addClass('is-invalid');
+          isValid = false;
+        } else {
+          $('#email').removeClass('is-invalid');
+        }
+        
+        if (!password) {
+          $('#password').addClass('is-invalid');
+          isValid = false;
+        } else {
+          $('#password').removeClass('is-invalid');
+        }
+        
+        if (isValid) {
+          // Show loading state
+          $('#loginBtn').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Signing in...');
+          $('#loginBtn').prop('disabled', true);
+          
+          // Simulate API call with timeout
+          setTimeout(function() {
+            // Redirect to dashboard on success (in a real app)
+            alert('Login successful! Redirecting to dashboard...');
+            $('#loginBtn').html('<i class="fas fa-sign-in-alt me-2"></i>Login');
+            $('#loginBtn').prop('disabled', false);
+            // window.location.href = 'dashboard.html';
+          }, 1500);
+        }
+      });
+      
+      // Email validation function
+      function validateEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+      }
+    });
+  </script>
+</body>
+</html>

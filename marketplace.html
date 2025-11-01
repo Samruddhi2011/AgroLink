@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | Crop Marketplace</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: #333;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-signup {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .hero-small {
+      background: url('/api/placeholder/1200/400') no-repeat center center/cover;
+      height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-small::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-small h1, .hero-small p {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .crop-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+
+    .crop-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .crop-img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .crop-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: var(--primary);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .seller-info {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .seller-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .filters {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    .filter-title {
+      font-weight: bold;
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .form-check-input:checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .price-range {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn-filter {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      margin-top: 15px;
+    }
+
+    .btn-list-crop {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .pagination .page-item.active .page-link {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .pagination .page-link {
+      color: var(--dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="homepage.html">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Features
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="marketplace.html">Marketplace</a></li>
+              <li><a class="dropdown-item" href="#news">News</a></li>
+              <li><a class="dropdown-item" href="#people">Expert Advice </a></li>
+              <li><a class="dropdown-item" href="#contact">Government Schemes</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button onclick="window.location.href='signup.html'" class="btn btn-light btn-signup">Sign Up</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-small">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Crop Marketplace</h1>
+      <p class="lead">Connect directly with buyers and sellers for the best deals</p>
+    </div>
+  </section>
+
+  <!-- Marketplace Content -->
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Filters Sidebar -->
+      <div class="col-lg-3">
+        <div class="filters">
+          <h4 class="filter-title">Filters</h4>
+          
+          <div class="mb-4">
+            <h6>Crop Category</h6>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="grains">
+              <label class="form-check-label" for="grains">
+                Grains
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="vegetables">
+              <label class="form-check-label" for="vegetables">
+                Vegetables
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="fruits">
+              <label class="form-check-label" for="fruits">
+                Fruits
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="pulses">
+              <label class="form-check-label" for="pulses">
+                Pulses
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="oilseeds">
+              <label class="form-check-label" for="oilseeds">
+                Oilseeds
+              </label>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <h6>Farming Method</h6>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="organic">
+              <label class="form-check-label" for="organic">
+                Organic
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="conventional">
+              <label class="form-check-label" for="conventional">
+                Conventional
+              </label>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <h6>Price Range (₹/Kg)</h6>
+            <div class="price-range mb-2">
+              <span>0</span>
+              <span>1000</span>
+            </div>
+            <input type="range" class="form-range" min="0" max="1000" step="10" id="priceRange">
+          </div>
+          
+          <div class="mb-4">
+            <h6>Location</h6>
+            <select class="form-select">
+              <option selected>All Locations</option>
+              <option>Punjab</option>
+              <option>Haryana</option>
+              <option>Uttar Pradesh</option>
+              <option>Maharashtra</option>
+              <option>Karnataka</option>
+            </select>
+          </div>
+          
+          <button class="btn-filter">Apply Filters</button>
+        </div>
+
+        <div class="text-center">
+          <button class="btn-list-crop">+ List Your Crop</button>
+        </div>
+      </div>
+      
+      <!-- Crop Listings -->
+      <div class="col-lg-9">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h4>Available Crops (256)</h4>
+          <div class="d-flex">
+            <select class="form-select me-2" style="width: auto;">
+              <option selected>Sort by: Newest</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Best Rating</option>
+            </select>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-outline-secondary" title="Grid View">
+                <i class="bi bi-grid"></i> Grid
+              </button>
+              <button type="button" class="btn btn-outline-secondary" title="List View">
+                <i class="bi bi-list-ul"></i> List
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <!-- Crop Card 1 -->
+          <div class="col-md-4 mb-4">
+            <div class="crop-card">
+              <div class="position-relative">
+                <img src="wheat.jpg" class="card-img-top crop-img" alt="Organic Wheat">
+                <span class="crop-badge">Organic</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Premium Wheat</h5>
+                <p class="card-text">Premium quality wheat grown organically in Punjab.</p>
+                <p class="text-primary fw-bold">₹35/kg</p>
+                <p class="text-muted mb-0">Available: 2500 kg</p>
+                <div class="seller-info">
+                  <img src="farm1.jpg" class="seller-img" alt="Seller">
+                  <div>
+                    <p class="mb-0 fw-bold">Harpreet Singh</p>
+                    <p class="mb-0 text-muted small">Punjab</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer bg-white">
+                <div class="d-grid">
+                  <button class="btn btn-sm btn-outline-success">Contact Seller</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Crop Card 2 -->
+          <div class="col-md-4 mb-4">
+            <div class="crop-card">
+              <div class="position-relative">
+                <img src="rice.jpg" class="card-img-top crop-img" alt="Basmati Rice">
+                <span class="crop-badge">Verified</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Basmati Rice</h5>
+                <p class="card-text">Premium basmati rice with rich aroma and taste.</p>
+                <p class="text-primary fw-bold">₹85/kg</p>
+                <p class="text-muted mb-0">Available: 1800 kg</p>
+                <div class="seller-info">
+                  <img src="farm2.jpg" class="seller-img" alt="Seller">
+                  <div>
+                    <p class="mb-0 fw-bold">Rajesh Kumar</p>
+                    <p class="mb-0 text-muted small">Haryana</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer bg-white">
+                <div class="d-grid">
+                  <button class="btn btn-sm btn-outline-success">Contact Seller</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Crop Card 3 -->
+          <div class="col-md-4 mb-4">
+            <div class="crop-card">
+              <div class="position-relative">
+                <img src="tomato.jpg" class="card-img-top crop-img" alt="Organic Tomatoes">
+                <span class="crop-badge">Organic</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Fresh Tomatoes</h5>
+                <p class="card-text">Vine-ripened organic tomatoes grown without pesticides.</p>
+                <p class="text-primary fw-bold">₹40/kg</p>
+                <p class="text-muted mb-0">Available: 800 kg</p>
+                <div class="seller-info">
+                  <img src="farm4.jpg" class="seller-img" alt="Seller">
+                  <div>
+                    <p class="mb-0 fw-bold">Lakshmi Devi</p>
+                    <p class="mb-0 text-muted small">Karnataka</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer bg-white">
+                <div class="d-grid">
+                  <button class="btn btn-sm btn-outline-success">Contact Seller</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Crop Card 4 -->
+          <div class="col-md-4 mb-4">
+            <div class="crop-card">
+              <div class="position-relative">
+                <img src="cotton.jpg" class="card-img-top crop-img" alt="Cotton">
+                <span class="crop-badge">Bulk</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Raw Cotton</h5>
+                <p class="card-text">High-quality cotton available in bulk quantities.</p>
+                <p class="text-primary fw-bold">₹65/kg</p>
+                <p class="text-muted mb-0">Available: 5000 kg</p>
+                <div class="seller-info">
+                  <img src="farm3.jpg" class="seller-img" alt="Seller">
+                  <div>
+                    <p class="mb-0 fw-bold">Ramesh Patel</p>
+                    <p class="mb-0 text-muted small">Gujarat</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer bg-white">
+                <div class="d-grid">
+                  <button class="btn btn-sm btn-outline-success">Contact Seller</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Crop Card 5 -->
+          <div class="col-md-4 mb-4">
+            <div class="crop-card">
+              <div class="position-relative">
+                <img src="sugarcane.jpg" class="card-img-top crop-img" alt="Sugarcane">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Sugarcane</h5>
+                <p class="card-text">Fresh sugarcane for juice or processing.</p>
+                <p class="text-primary fw-bold">₹25/kg</p>
+                <p class="text-muted mb-0">Available: 10000 kg</p>
+                <div class="seller-info">
+                  <img src="farm5.jpg" class="seller-img" alt="Seller">
+                  <div>
+                    <p class="mb-0 fw-bold">Vijay Sharma</p>
+                    <p class="mb-0 text-muted small">Uttar Pradesh</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer bg-white">
+                <div class="d-grid">
+                  <button class="btn btn-sm btn-outline-success">Contact Seller</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Crop Card 6 -->
+          <div class="col-md-4 mb-4">
+            <div class="crop-card">
+              <div class="position-relative">
+                <img src="apple.jpg" class="card-img-top crop-img" alt="Organic Apples">
+                <span class="crop-badge">Organic</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Himalayan Apples</h5>
+                <p class="card-text">Fresh organic apples from the mountains of Himachal.</p>
+                <p class="text-primary fw-bold">₹120/kg</p>
+                <p class="text-muted mb-0">Available: 600 kg</p>
+                <div class="seller-info">
+                  <img src="farm6.jpg" class="seller-img" alt="Seller">
+                  <div>
+                    <p class="mb-0 fw-bold">Surinder Thakur</p>
+                    <p class="mb-0 text-muted small">Himachal Pradesh</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer bg-white">
+                <div class="d-grid">
+                  <button class="btn btn-sm btn-outline-success">Contact Seller</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="mt-4">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 AgroLink. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    
+      
+      // Show selected price
+      $("#priceRange").on('input', function() {
+        $("#selectedPrice").text($(this).val());
+      });
+  
+  </script>
+</body>
+</html>

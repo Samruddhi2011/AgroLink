@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Profile | AgroLink</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: #333;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-signup {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .section-title {
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .profile-header {
+      background-color: var(--secondary);
+      padding: 3rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border: 5px solid white;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .farm-gallery img {
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .farm-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .badge-organic {
+      background-color: var(--primary);
+      color: white;
+      font-weight: normal;
+      padding: 5px 10px;
+      border-radius: 15px;
+    }
+
+    .contact-info {
+      background-color: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .contact-info i {
+      color: var(--primary);
+      margin-right: 10px;
+    }
+
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .certification-badge {
+      width: 80px;
+      margin: 0 10px;
+    }
+
+    .progress {
+      height: 10px;
+      border-radius: 5px;
+    }
+
+    .progress-bar {
+      background-color: var(--primary);
+    }
+
+    .nav-pills .nav-link.active {
+      background-color: var(--primary);
+    }
+
+    .nav-pills .nav-link {
+      color: var(--dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Features
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="product (1).html">Marketplace</a></li>
+              <li><a class="dropdown-item" href="weatherupdate.html">News</a></li>
+              <li><a class="dropdown-item" href="expertadvice.html">Expert Advice</a></li>
+              <li><a class="dropdown-item" href="agrolink-schemes-page.html">Government Schemes</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button onclick="window.location.href='signup.html'" class="btn btn-light btn-signup">Sign Up</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Profile Header -->
+  <section class="profile-header">
+    <div class="container text-center">
+      <img src="farm3.jpg" alt="Rajesh Patel" class="profile-img mb-4">
+      <h1>Rajesh Patel</h1>
+      <h5 class="text-muted">Organic Rice & Vegetable Farmer</h5>
+      <div class="mt-3">
+        <span class="badge bg-success me-2">Organic Certified</span>
+        <span class="badge bg-info me-2">Sustainable Practices</span>
+        <span class="badge bg-warning">10+ Years Experience</span>
+      </div>
+      <div class="mt-4">
+        <button class="btn btn-success me-3">Contact Farmer</button>
+        <button class="btn btn-outline-success">View Products</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <!-- Left Column - About -->
+      <div class="col-lg-8">
+        <!-- Nav Tabs -->
+        <ul class="nav nav-pills mb-4" id="farmerTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="about-tab" data-bs-toggle="pill" data-bs-target="#about" type="button" role="tab">About</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="products-tab" data-bs-toggle="pill" data-bs-target="#products" type="button" role="tab">Products</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="gallery-tab" data-bs-toggle="pill" data-bs-target="#gallery" type="button" role="tab">Farm Gallery</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="reviews-tab" data-bs-toggle="pill" data-bs-target="#reviews" type="button" role="tab">Reviews</button>
+          </li>
+        </ul>
+
+        <div class="tab-content p-4 bg-white rounded shadow-sm" id="farmerTabContent">
+          <!-- About Tab -->
+          <div class="tab-pane fade show active" id="about" role="tabpanel">
+            <h3>Farmer's Story</h3>
+            <p>Rajesh Patel has been farming for over 15 years in the fertile region of Punjab. What began as a small family plot has now grown into a thriving 25-acre organic farm that produces some of the finest rice and vegetables in the region.</p>
+            
+            <p>After completing his agricultural studies at Punjab Agricultural University, Rajesh returned to his village with a mission to transform traditional farming methods. In 2015, he made the brave decision to switch to completely organic practices, becoming one of the first certified organic farmers in his district.</p>
+            
+            <h3 class="mt-4">Farming Philosophy</h3>
+            <p>Rajesh believes in the principle of working with nature rather than against it. His farming practices focus on soil health, biodiversity, and sustainable water management. He has implemented several innovative techniques:</p>
+            
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <h5>Sustainable Practices</h5>
+                <ul>
+                  <li>Natural pest management using beneficial insects</li>
+                  <li>Crop rotation to maintain soil fertility</li>
+                  <li>Rainwater harvesting systems</li>
+                  <li>Composting of farm waste</li>
+                  <li>Use of indigenous seed varieties</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h5>Farm Metrics</h5>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between mb-1">
+                    <span>Soil Health</span>
+                    <span>95%</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between mb-1">
+                    <span>Biodiversity</span>
+                    <span>85%</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between mb-1">
+                    <span>Water Conservation</span>
+                    <span>90%</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <h3 class="mt-4">Certifications</h3>
+            <div class="d-flex align-items-center mt-3">
+              <img src="ocertificate.png" alt="Organic Certification" class="certification-badge">
+              <img src="ftcertificate.png" alt="Fair Trade" class="certification-badge">
+              <img src="scertificate.webp" alt="Sustainable Farm" class="certification-badge">
+            </div>
+          </div>
+          
+          <!-- Products Tab -->
+          <div class="tab-pane fade" id="products" role="tabpanel">
+            <h3>Available Products</h3>
+            <p class="text-muted">Currently in season and available for purchase</p>
+            
+            <div class="row mt-4">
+              <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                  <img src="rice.webp" class="card-img-top" alt="Basmati Rice">
+                  <div class="card-body">
+                    <span class="badge badge-organic mb-2">Organic</span>
+                    <h5 class="card-title">Basmati Rice</h5>
+                    <p class="card-text">Premium long-grain aromatic rice, harvested at peak ripeness.</p>
+                    <p class="fw-bold">₹120/kg</p>
+                    <button class="btn btn-sm btn-success w-100">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                  <img src="tomato.webp" class="card-img-top" alt="Fresh Tomatoes">
+                  <div class="card-body">
+                    <span class="badge badge-organic mb-2">Organic</span>
+                    <h5 class="card-title">Fresh Tomatoes</h5>
+                    <p class="card-text">Vine-ripened, juicy tomatoes free from pesticides.</p>
+                    <p class="fw-bold">₹40/kg</p>
+                    <button class="btn btn-sm btn-success w-100">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                  <img src="spinach.webp" class="card-img-top" alt="Organic Spinach">
+                  <div class="card-body">
+                    <span class="badge badge-organic mb-2">Organic</span>
+                    <h5 class="card-title">Fresh Spinach</h5>
+                    <p class="card-text">Nutrient-rich leafy greens, harvested daily.</p>
+                    <p class="fw-bold">₹30/bunch</p>
+                    <button class="btn btn-sm btn-success w-100">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="text-center mt-3">
+              <button class="btn btn-outline-success">View All Products</button>
+            </div>
+          </div>
+          
+          <!-- Gallery Tab -->
+          <div class="tab-pane fade" id="gallery" role="tabpanel">
+            <h3>Farm Gallery</h3>
+            <p class="text-muted">Images from Rajesh's farm throughout the seasons</p>
+            
+            <div class="row farm-gallery mt-4">
+              <div class="col-md-4">
+                <img src="Crop-Rotation-Practice-1.webp" alt="Rice field" class="img-fluid w-100">
+              </div>
+              <div class="col-md-4">
+                <img src="vegarden.jpg" alt="Vegetable garden" class="img-fluid w-100">
+              </div>
+              <div class="col-md-4">
+                <img src="farmer-harvest-icon-vector-778453.jpg" alt="Farm equipment" class="img-fluid w-100">
+              </div>
+              <div class="col-md-4">
+                <img src="watermang.jpg" alt="Irrigation system" class="img-fluid w-100">
+              </div>
+              <div class="col-md-4">
+                <img src="farm3.jpg" alt="Harvest season" class="img-fluid w-100">
+              </div>
+              <div class="col-md-4">
+                <img src="farm4.jpg" alt="Farm workers" class="img-fluid w-100">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Reviews Tab -->
+          <div class="tab-pane fade" id="reviews" role="tabpanel">
+            <h3>Customer Reviews</h3>
+            <p class="text-muted">What people are saying about Rajesh's products</p>
+            
+            <div class="row mt-4">
+              <div class="col-md-12 mb-4">
+                <div class="d-flex">
+                  <img src="cust1.avif" alt="Customer" class="rounded-circle me-3" style="width: 64px; height: 64px;">
+                  <div>
+                    <h5>Priya Sharma</h5>
+                    <div class="text-warning mb-2">
+                      ★★★★★
+                    </div>
+                    <p>"I've been buying Rajesh's organic rice for two years now, and the quality is consistently excellent. The flavor is rich, and knowing it's grown without chemicals gives me peace of mind for my family."</p>
+                    <small class="text-muted">3 months ago</small>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-12 mb-4">
+                <div class="d-flex">
+                  <img src="cust.jpg" alt="Customer" class="rounded-circle me-3" style="width: 64px; height: 64px;">
+                  <div>
+                    <h5>Amit Patel</h5>
+                    <div class="text-warning mb-2">
+                      ★★★★☆
+                    </div>
+                    <p>"The vegetables from this farm are incredibly fresh and flavorful. My only wish is that they offered more variety throughout the year. Still, what they do grow is top quality."</p>
+                    <small class="text-muted">1 month ago</small>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-12 mb-4">
+                <div class="d-flex">
+                  <img src="cust3.jpeg" alt="Customer" class="rounded-circle me-3" style="width: 64px; height: 64px;">
+                  <div>
+                    <h5>Neha Gupta</h5>
+                    <div class="text-warning mb-2">
+                      ★★★★★
+                    </div>
+                    <p>"I run a restaurant that focuses on organic ingredients, and Rajesh has been our trusted supplier for years. His produce is consistently excellent, and his farming practices align with our values. Highly recommended!"</p>
+                    <small class="text-muted">2 weeks ago</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="text-center mt-3">
+              <button class="btn btn-outline-success">Write a Review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Column - Contact Info -->
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="contact-info mb-4">
+          <h4>Contact Information</h4>
+          <hr>
+          <p><i class="bi bi-geo-alt-fill"></i> Sundarpur Village, Punjab, India</p>
+          <p><i class="bi bi-telephone-fill"></i> +91 98765 43210</p>
+          <p><i class="bi bi-envelope-fill"></i> rajesh.patel@agrolink.com</p>
+          <div class="d-grid gap-2 mt-4">
+            <button class="btn btn-success">Send Message</button>
+          </div>
+        </div>
+        
+        <div class="card mt-4">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Farm Details</h5>
+          </div>
+          <div class="card-body">
+            <p><strong>Location:</strong> Sundarpur, Punjab</p>
+            <p><strong>Farm Size:</strong> 25 acres</p>
+            <p><strong>Farming Since:</strong> 2010</p>
+            <p><strong>Organic Since:</strong> 2015</p>
+            <p><strong>Main Crops:</strong> Rice, Tomatoes, Spinach, Eggplant</p>
+            <p><strong>Preferred Payment:</strong> Online Transfer, Cash on Delivery</p>
+          </div>
+        </div>
+        
+        <div class="card mt-4">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Upcoming Events</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <h6>Farm Visit & Workshop</h6>
+              <p class="text-muted mb-1">May 15, 2025 | 9:00 AM - 1:00 PM</p>
+              <p class="small">Learn about organic farming practices and participate in planting activities.</p>
+            </div>
+            <div>
+              <h6>Weekend Farmers Market</h6>
+              <p class="text-muted mb-1">Every Saturday | 7:00 AM - 11:00 AM</p>
+              <p class="small">Fresh produce available at the Sundarpur Village square.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 AgroLink. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+</body>
+</html>s

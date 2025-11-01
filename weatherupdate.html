@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink | Weather Updates</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #a5d6a7;
+      --dark: #1b5e20;
+      --light: #f1f8e9;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: #333;
+    }
+
+    .navbar {
+      background-color: var(--primary);
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .dropdown-toggle {
+      color: #fff !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--secondary);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-signup {
+      background-color: #fff;
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 15px;
+      margin-left: 15px;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), no-repeat center center/cover;
+      height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title {
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .weather-card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .weather-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .weather-icon {
+      font-size: 3rem;
+      color: var(--primary);
+    }
+
+    .forecast-day {
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .alert-box {
+      background-color: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    .weather-map {
+      height: 400px;
+      width: 100%;
+      background-color: #e9ecef;
+      border-radius: 10px;
+    }
+
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+    }
+
+    .footer a {
+      color: #a5d6a7;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">AgroLink</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Features
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="product (1).html">Marketplace</a></li>
+              <li><a class="dropdown-item" href="weatherupdate.html">News</a></li>
+              <li><a class="dropdown-item" href="expertadvice.html">Expert Advice</a></li>
+              <li><a class="dropdown-item" href="agrolink-schemes-page.html">Government Sc</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="weather.html">Weather</a></li>
+          <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        </ul>
+        <a href="#signup" class="btn btn-light btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="background-image: url('corn-harvet-bruce-morrison.jpg'); background-size: cover; background-position: center; height: 50vh;">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Weather Updates</h1>
+      <p class="lead">Real-time forecasts and alerts for informed farming decisions</p>
+    </div>
+  </section>
+
+  <!-- Current Weather Section -->
+  <section id="current-weather" class="py-5 bg-white">
+    <div class="container">
+      <h2 class="section-title">Current Weather</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card weather-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <h3>New Delhi, India</h3>
+              <span class="weather-icon">☀️</span>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <h2 class="display-4">32°C</h2>
+                <p>Sunny</p>
+              </div>
+              <div class="col-6">
+                <div class="mt-2">
+                  <p><strong>Humidity:</strong> 45%</p>
+                  <p><strong>Wind:</strong> 12 km/h</p>
+                  <p><strong>Precipitation:</strong> 0%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="alert-box">
+            <h4>Weather Alerts</h4>
+            <p><strong>Heat Advisory:</strong> Temperatures expected to reach 38°C tomorrow. Consider adjusting irrigation schedules.</p>
+          </div>
+          <div class="alert-box" style="background-color: #d1e7dd; border-left-color: #198754;">
+            <h4>Farming Tip</h4>
+            <p>Optimal conditions for wheat harvesting expected next week. Plan your equipment and labor accordingly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-Day Forecast Section -->
+  <section id="forecast" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">5-Day Forecast</h2>
+      <div class="row">
+        <div class="col-md forecast-day">
+          <h5>Today</h5>
+          <div class="text-center my-3">☀️</div>
+          <p class="text-center">32°C / 24°C</p>
+          <p class="small">Sunny, clear skies</p>
+        </div>
+        <div class="col-md forecast-day">
+          <h5>Tomorrow</h5>
+          <div class="text-center my-3">🌤️</div>
+          <p class="text-center">38°C / 26°C</p>
+          <p class="small">Mostly sunny</p>
+        </div>
+        <div class="col-md forecast-day">
+          <h5>Wednesday</h5>
+          <div class="text-center my-3">⛅</div>
+          <p class="text-center">35°C / 25°C</p>
+          <p class="small">Partly cloudy</p>
+        </div>
+        <div class="col-md forecast-day">
+          <h5>Thursday</h5>
+          <div class="text-center my-3">🌧️</div>
+          <p class="text-center">29°C / 23°C</p>
+          <p class="small">Light rain</p>
+        </div>
+        <div class="col-md forecast-day">
+          <h5>Friday</h5>
+          <div class="text-center my-3">⛅</div>
+          <p class="text-center">31°C / 24°C</p>
+          <p class="small">Partly cloudy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weather Map Section -->
+  <section id="weather-map" class="py-5">
+    <div class="container">
+      <h2 class="section-title">Regional Weather Map</h2>
+      <div class="weather-map">
+        <!-- Placeholder for weather map -->
+        <div class="weather-map">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://embed.windy.com/embed2.html?lat=28.61&lon=77.23&detailLat=28.61&detailLon=77.23&width=650&height=450&zoom=5&level=surface&overlay=wind&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&metricWind=km/h&metricTemp=%C2%B0C&radarRange=-1"
+              frameborder="0"
+            ></iframe>
+          </div>
+      <div class="mt-4">
+        <h4>Crop-Specific Weather Information</h4>
+        <div class="row mt-3">
+          <div class="col-md-4 mb-3">
+            <div class="card p-3">
+              <h5>Rice</h5>
+              <p>Current conditions: <span class="text-success">Favorable</span></p>
+              <p class="small">Adequate moisture and temperature levels for rice cultivation.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card p-3">
+              <h5>Wheat</h5>
+              <p>Current conditions: <span class="text-warning">Caution</span></p>
+              <p class="small">Upcoming high temperatures may affect wheat. Consider additional irrigation.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card p-3">
+              <h5>Cotton</h5>
+              <p>Current conditions: <span class="text-success">Favorable</span></p>
+              <p class="small">Current weather patterns are ideal for cotton growth stage.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <br><br><br><br><br><br>
+  <br><br><br>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2025 AgroLink. All rights reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a> | 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      $(".navbar-nav a").on('click', function (e) {
+        if (this.hash !== "") {
+          e.preventDefault();
+          const hash = this.hash;
+          $('html, body').animate({ scrollTop: $(hash).offset().top - 70 }, 800);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
